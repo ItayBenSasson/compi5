@@ -386,6 +386,9 @@ class symbol_table{
     }
     if(!(v->type == right->type ||(v->type == "INT" && right->type == "BYTE")) ){
         cout << "error in check_assignment_in" << endl;
+        //print the types
+        cout << v->type << " " << right->type << endl;
+        cout << left_name << endl;
         output::errorMismatch(yylineno);
         exit(0);
     }

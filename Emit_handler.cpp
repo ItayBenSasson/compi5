@@ -167,6 +167,7 @@ void handle_binop(Node *exp, Node *left, Node *right, Node *operation_node) {
     string var = Var::fresh();
 
     string op = get_operation(((OperationNode *) operation_node)->operation);
+    //cout << "---------------------------op: " << op << endl;
     if (op == "sdiv")
         check_div_by_zero(right);
 
@@ -286,7 +287,7 @@ void store(Node *idNode, Node *exp) {
         
         //string cmd = "store i32 " + expNode->iid + ", i32* %var_" + to_string(offset);
         //Todo: fix this
-        string cmd = string(expNode->type)+"store i32 " + string("%v_0") + ", i32* %var_" + to_string(offset);
+        string cmd = "store i32 " + string("%v_0") + ", i32* %var_" + to_string(offset);
         buff.emit(cmd);
         //cout << "store exited\n" << endl;
         return;

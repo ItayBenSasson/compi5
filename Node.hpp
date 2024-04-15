@@ -101,7 +101,7 @@ class OperationNode : public Node {
 public:
     string operation;
 
-    OperationNode(int line_num, const char*  op) : Node(line_num), operation(operation) {}
+    OperationNode(int line_num, const char*  op) : Node(line_num), operation(op) {}
 };
 class ExpNode : public Node {
 public:
