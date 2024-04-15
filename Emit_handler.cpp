@@ -23,7 +23,7 @@ public:
 };
 
 string get_operation(const string& raw_operation) {
-    cout << "get_operation entered\n" << endl;
+    //cout << "get_operation entered\n" << endl;
     string operation;
     if (raw_operation == "+") {
         operation = "add";
@@ -58,12 +58,12 @@ string get_operation(const string& raw_operation) {
     else if (raw_operation == "!=") {
         operation = "ne";
     }
-    cout << "get_operation exited\n" << endl;
+    //cout << "get_operation exited\n" << endl;
     return operation;
 }
 
 void handle_start() {
-    cout << "handle_start entered\n" << endl;
+    //cout << "handle_start entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string start = "declare i32 @scanf(i8*, ...)\n"
@@ -103,12 +103,12 @@ void handle_start() {
         cmd += "\n%var_" + to_string(i) + " = alloca i32";
     }
     buff.emit(cmd);
-    cout << "handle_start exited\n" << endl;
+    //cout << "handle_start exited\n" << endl;
 
 }
 
 void handle_end() {
-    cout << "handle_end entered\n" << endl;
+    //cout << "handle_end entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     handle_ret();
@@ -117,21 +117,21 @@ void handle_end() {
 
     buff.printGlobalBuffer();
     buff.printCodeBuffer();
-    cout << "handle_end exited\n" << endl;
+    //cout << "handle_end exited\n" << endl;
 }
 
 void handle_ret() {
-    cout << "handle_ret entered\n" << endl;
+    //cout << "handle_ret entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string cmd = "ret i32 0";
     buff.emit(cmd);
-    cout << "handle_ret exited\n" << endl;
+    //cout << "handle_ret exited\n" << endl;
 }
 
 
 void handle_num(Node *exp, Node *node) {
-    cout << "handle_num entered\n" << endl;
+    //cout << "handle_num entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string var = Var::fresh();
@@ -141,11 +141,11 @@ void handle_num(Node *exp, Node *node) {
     buff.emit(cmd);
 
     exp->iid = var;
-    cout << "handle_num exited\n" << endl;
+    //cout << "handle_num exited\n" << endl;
 }
 
 void handle_byte(Node *exp, Node *node) {
-    cout << "handle_byte entered\n" << endl;
+    //cout << "handle_byte entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string temp_var = Var::fresh();
@@ -157,11 +157,11 @@ void handle_byte(Node *exp, Node *node) {
     buff.emit(cmd);
 
     exp->iid = var;
-    cout << "handle_byte exited\n" << endl;
+    //cout << "handle_byte exited\n" << endl;
 }
 
 void handle_binop(Node *exp, Node *left, Node *right, Node *operation_node) {
-    cout << "handle_binop entered\n" << endl;
+    //cout << "handle_binop entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string var = Var::fresh();
@@ -184,11 +184,11 @@ void handle_binop(Node *exp, Node *left, Node *right, Node *operation_node) {
     }
 
     buff.emit(cmd);
-    cout << "handle_binop exited\n" << endl;
+    //cout << "handle_binop exited\n" << endl;
 }
 
 void handle_string(Node *exp, Node *node) {
-    cout << "handle_string entered\n" << endl;
+    //cout << "handle_string entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string value = ((StringNode *) node)->data;
@@ -201,11 +201,15 @@ void handle_string(Node *exp, Node *node) {
     buff.emitGlobal(cmd);
 
     exp->iid = temp_var;
-    cout << "handle_string exited\n" << endl;
+
+    //we need to change the type of the node to string
+    exp->type = "STRING";
+
+    //cout << "handle_string exited\n" << endl;
 }
 
 void load(Node *exp, Node *node) {
-    cout << "load entered\n" << endl;
+    //cout << "load entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string var = Var::fresh();
@@ -228,11 +232,11 @@ void load(Node *exp, Node *node) {
 
     expNode->iid = var;
     expNode->type = symbol->type;
-    cout << "load exited\n" << endl;
+    //cout << "load exited\n" << endl;
 }
 
 void store(Node *idNode, Node *exp) {
-    cout << "store entered\n" << endl;
+    //cout << "store entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string id = ((IdNode *) idNode)->id;
@@ -245,7 +249,7 @@ void store(Node *idNode, Node *exp) {
     if (expNode->type != "BOOL") {
         string cmd = "store i32 " + expNode->iid + ", i32* %var_" + to_string(offset);
         buff.emit(cmd);
-        cout << "store exited\n" << endl;
+        //cout << "store exited\n" << endl;
         return;
     }
 
@@ -261,11 +265,11 @@ void store(Node *idNode, Node *exp) {
                  + temp_var + " = phi i32 [1, %" + expNode->true_l + "], [0, %" + expNode->false_l + "]\n"
                  + "store i32 " + temp_var + ", i32* %var_" + to_string(offset);
     buff.emit(cmd);
-    cout << "store exited\n" << endl;
+    //cout << "store exited\n" << endl;
 }
 
 void store_default(Node *idNode) {
-    cout << "store_default entered\n" << endl;
+    //cout << "store_default entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string id = ((IdNode *) idNode)->id;
@@ -275,11 +279,11 @@ void store_default(Node *idNode) {
 
     string cmd = "store i32 0, i32* %var_" + to_string(offset);
     buff.emit(cmd);
-    cout << "store_default exited\n" << endl;
+    //cout << "store_default exited\n" << endl;
 }
 
 void check_div_by_zero(Node *node) {
-    cout << "check_div_by_zero entered\n" << endl;
+    //cout << "check_div_by_zero entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string temp_var = Var::fresh();
@@ -295,32 +299,41 @@ void check_div_by_zero(Node *node) {
                  + false_label + ":";
 
     buff.emit(cmd);
-    cout << "check_div_by_zero exited\n" << endl;
+    //cout << "check_div_by_zero exited\n" << endl;
 }
 
 void handle_bool(Node *expNode, bool value) {
-    cout << "handle_bool entered\n" << endl;
+    //cout << "handle_bool entered\n" << endl;
+    //cout << "vakue: " << value << "\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
     ExpNode* exp = (ExpNode *) expNode;
+    // //cout << "these are exp fields:\n" << endl;
+    // //cout << "iid: " << exp->iid << endl;
+    // //cout << "type: " << exp->type << endl;
+    // //cout << "id: " << exp->id << endl;
+    // //cout << "line: " << exp->line << endl;    
+    // //cout << "true_l: " << exp->true_l << endl;
+    // //cout << "false_l: " << exp->false_l << endl;
+    // //cout << "these are exp fields:\n" << endl;
     exp->true_l = buff.freshLabel();
     exp->false_l = buff.freshLabel();
     string cmd = "br label %" + (value ? exp->true_l : exp->false_l);
     buff.emit(cmd);
-    cout << "handle_bool exited\n" << endl;
+    //cout << "handle_bool exited\n" << endl;
 }
 
 void not_expression(Node *expNode, Node *expNode2) {
-    cout << "not_expression entered\n" << endl;
+    //cout << "not_expression entered\n" << endl;
     auto exp = (ExpNode *) expNode;
     auto exp2 = (ExpNode *) expNode2;
 
     exp->true_l = exp2->false_l;
     exp->false_l = exp2->true_l;
-    cout << "not_expression exited\n" << endl;
+    //cout << "not_expression exited\n" << endl;
 }
 
 void and_left_part(Node *left) {
-    cout << "and_left_part entered\n" << endl;
+    //cout << "and_left_part entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto leftExp = (ExpNode *) left;
@@ -328,11 +341,11 @@ void and_left_part(Node *left) {
     string cmd = "br label %" + leftExp->true_l + "\n"
                  + leftExp->true_l + ":";
     buff.emit(cmd);
-    cout << "and_left_part exited\n" << endl;
+    //cout << "and_left_part exited\n" << endl;
 }
 
 void and_right_part(Node *exp, Node *left, Node *right) {
-    cout << "and_right_part entered\n" << endl;
+    //cout << "and_right_part entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto expNode = (ExpNode *) exp;
@@ -346,22 +359,22 @@ void and_right_part(Node *exp, Node *left, Node *right) {
                  + leftNode->false_l + ":" + "\n"
                  + "br label %" + expNode->false_l;
     buff.emit(cmd);
-    cout << "and_right_part exited\n" << endl;
+    //cout << "and_right_part exited\n" << endl;
 }
 
 void or_left_part(Node *left) {
-    cout << "or_left_part entered\n" << endl;
+    //cout << "or_left_part entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto leftExp = (ExpNode *) left;
 
     string cmd = leftExp->false_l + ":";
     buff.emit(cmd);
-    cout << "or_left_part exited\n" << endl;
+    //cout << "or_left_part exited\n" << endl;
 }
 
 void or_right_part(Node *exp, Node *left, Node *right) {
-    cout << "or_right_part entered\n" << endl;
+    //cout << "or_right_part entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto expNode = (ExpNode *) exp;
@@ -374,11 +387,11 @@ void or_right_part(Node *exp, Node *left, Node *right) {
     string cmd = leftNode->true_l + ":" + "\n"
                  + "br label %" + expNode->true_l;
     buff.emit(cmd);
-    cout << "or_right_part exited\n" << endl;
+    //cout << "or_right_part exited\n" << endl;
 }
 
 void handle_relop(Node *exp, Node *left, Node *right, Node *op_node) {
-    cout << "handle_relop entered\n" << endl;
+    //cout << "handle_relop entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto expNode = (ExpNode *) exp;
@@ -391,31 +404,31 @@ void handle_relop(Node *exp, Node *left, Node *right, Node *op_node) {
     string cmd = temp_var + " = icmp " + op + " i32 " + left->iid + ", " + right->iid + "\n"
                  + "br i1 " + temp_var + ", label %" + expNode->true_l + ", label %" + expNode->false_l;
     buff.emit(cmd);
-    cout << "handle_relop exited\n" << endl;
+    //cout << "handle_relop exited\n" << endl;
 }
 
 void handle_label(Node *exp, bool value) {
-    cout << "handle_label entered\n" << endl;
+    //cout << "handle_label entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto expNode = (ExpNode *) exp;
     string label = value ? expNode->true_l : expNode->false_l;
-
+    //cout << "handle label midway\n" << endl;
     string cmd = "br label %" + label + "\n"
                  + label + ":";
     buff.emit(cmd);
-    cout << "handle_label exited\n" << endl;
+    //cout << "handle_label exited\n" << endl;
 }
 
 Node *create_end_label() {
-    cout << "create_end_label entered\n" << endl;
+    //cout << "create_end_label entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto end_label = new ExpNode(0);
     end_label->true_l = buff.freshLabel();
 
     return end_label;
-    cout << "create_end_label exited\n" << endl;
+    //cout << "create_end_label exited\n" << endl;
 }
 
     
@@ -423,31 +436,31 @@ Node *create_end_label() {
 
 
 void jmp_end_label(Node *end_label) {
-    cout << "jmp_end_label entered\n" << endl;
+    //cout << "jmp_end_label entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto expNode = (ExpNode *) end_label;
     string cmd = "br label %" + expNode->true_l;
     buff.emit(cmd);
-    cout << "jmp_end_label exited\n" << endl;
+    //cout << "jmp_end_label exited\n" << endl;
 }
 
 scope *find_last_while() {
-    cout << "find_last_while entered\n" << endl;
+    //cout << "find_last_while entered\n" << endl;
     scope* s = symbol_table::get_instance()->current;
     while (s != NULL){
         if (s->scope_type == "while"){
-            cout << "find_last_while exited\n" << endl;
+            //cout << "find_last_while exited\n" << endl;
             return s;
         }
         s = s->parent;
     }
-    cout << "find_last_while exited\n" << endl;
+    //cout << "find_last_while exited\n" << endl;
     return nullptr;
 }
 
 void handle_while(Node *exp) {
-    cout << "handle while entered\n" << endl;
+    //cout << "handle while entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto scope = find_last_while();
@@ -457,34 +470,34 @@ void handle_while(Node *exp) {
 
     string cmd = expNode->true_l + ":";
     buff.emit(cmd);
-    cout << "handle while exited\n" << endl;
+    //cout << "handle while exited\n" << endl;
 }
 
 void handle_break() {
-    cout << "handle_break entered\n" << endl;
+    //cout << "handle_break entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto scope = find_last_while();
 
     string cmd = "br label %" + scope->el;
     buff.emit(cmd);
-    cout << "handle_break exited\n" << endl;
+    //cout << "handle_break exited\n" << endl;
 }
 
 void handle_continue() {
-    cout << "handle_continue entered\n" << endl;
+    //cout << "handle_continue entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto scope = find_last_while();
 
     string cmd = "br label %" + scope->sl;
     buff.emit(cmd);
-    cout << "handle_continue exited\n" << endl;
+    //cout << "handle_continue exited\n" << endl;
 }
 
 
 void handle_call(Node *call, Node *id, Node *arg) {
-    cout << "handle_call entered\n" << endl;
+    //cout << "handle_call entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
 
     string function_name = ((IdNode *) id)->id;
@@ -501,7 +514,7 @@ void handle_call(Node *call, Node *id, Node *arg) {
     }
 
     buff.emit(cmd);
-    cout << "handle_call exited\n" << endl;
+    //cout << "handle_call exited\n" << endl;
 }
 
 

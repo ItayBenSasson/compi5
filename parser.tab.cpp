@@ -1457,13 +1457,13 @@ yyreduce:
 
   case 13:
 #line 60 "parser.ypp"
-                                                 {symbol_table::get_instance()->enter_scope("else");}
+                                                 {yyval = create_end_label(); jmp_end_label(yyval); handle_label(yyvsp[-4], false); symbol_table::get_instance()->enter_scope("else");}
 #line 1462 "parser.tab.cpp"
     break;
 
   case 14:
 #line 60 "parser.ypp"
-                                                                                                                {symbol_table::get_instance()->exit_scope(); handle_label(yyvsp[-1], true);}
+                                                                                                                                                                                     {symbol_table::get_instance()->exit_scope(); handle_label(yyvsp[-1], true);}
 #line 1468 "parser.tab.cpp"
     break;
 
@@ -1512,25 +1512,25 @@ yyreduce:
   case 22:
 #line 69 "parser.ypp"
                                                                     {symbol_table::get_instance()->check_call(yyvsp[-3], yyvsp[-1]);
-                                                                    yyval = new Node((yyvsp[-1])->line,symbol_table::get_instance()->get_func_type(yyvsp[-3]));                handle_call(yyval, yyvsp[-3], yyvsp[-1]);}
+                                                                    yyval = new ExpNode((yyvsp[-1])->line,symbol_table::get_instance()->get_func_type(yyvsp[-3]));                handle_call(yyval, yyvsp[-3], yyvsp[-1]);}
 #line 1517 "parser.tab.cpp"
     break;
 
   case 23:
 #line 72 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, "INT");}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, "INT");}
 #line 1523 "parser.tab.cpp"
     break;
 
   case 24:
 #line 73 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, "BYTE");}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, "BYTE");}
 #line 1529 "parser.tab.cpp"
     break;
 
   case 25:
 #line 74 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, "BOOL");}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, "BOOL");}
 #line 1535 "parser.tab.cpp"
     break;
 
@@ -1542,19 +1542,19 @@ yyreduce:
 
   case 27:
 #line 77 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]));                                          handle_binop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]));                                          handle_binop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
 #line 1547 "parser.tab.cpp"
     break;
 
   case 28:
 #line 78 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]));                                          handle_binop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]));                                          handle_binop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
 #line 1553 "parser.tab.cpp"
     break;
 
   case 29:
 #line 79 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, symbol_table::get_instance()->get_var_type(yyvsp[0]));               load(yyval, yyvsp[0]);}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, symbol_table::get_instance()->get_var_type(yyvsp[0]));               load(yyval, yyvsp[0]);}
 #line 1559 "parser.tab.cpp"
     break;
 
@@ -1566,67 +1566,67 @@ yyreduce:
 
   case 31:
 #line 81 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, "INT");                                                        handle_num(yyval, yyvsp[0]);}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, "INT");                                                        handle_num(yyval, yyvsp[0]);}
 #line 1571 "parser.tab.cpp"
     break;
 
   case 32:
 #line 82 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, "BYTE"); symbol_table::get_instance()->check_byte(yyvsp[-1]);                                       handle_byte(yyval, yyvsp[-1]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BYTE"); symbol_table::get_instance()->check_byte(yyvsp[-1]);                                       handle_byte(yyval, yyvsp[-1]);}
 #line 1577 "parser.tab.cpp"
     break;
 
   case 33:
 #line 83 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, "STRING");                                                     handle_string(yyval, yyvsp[0]);}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, "STRING");                                                     handle_string(yyval, yyvsp[0]);}
 #line 1583 "parser.tab.cpp"
     break;
 
   case 34:
 #line 84 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, "BOOL");                                                       handle_bool(yyval, true);}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, "BOOL");                                                       handle_bool(yyval, true);}
 #line 1589 "parser.tab.cpp"
     break;
 
   case 35:
 #line 85 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, "BOOL");                                                       handle_bool(yyval, false);}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, "BOOL");                                                       handle_bool(yyval, false);}
 #line 1595 "parser.tab.cpp"
     break;
 
   case 36:
 #line 86 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[0]);                                       not_expression(yyval, yyvsp[0]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[0]);                                       not_expression(yyval, yyvsp[0]);}
 #line 1601 "parser.tab.cpp"
     break;
 
   case 37:
 #line 87 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-2]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       and_right_part(yyval, yyvsp[-2], yyvsp[0]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-2]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       and_right_part(yyval, yyvsp[-2], yyvsp[0]);}
 #line 1607 "parser.tab.cpp"
     break;
 
   case 38:
 #line 88 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-2]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       or_right_part(yyval, yyvsp[-2], yyvsp[0]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-2]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       or_right_part(yyval, yyvsp[-2], yyvsp[0]);}
 #line 1613 "parser.tab.cpp"
     break;
 
   case 39:
 #line 89 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
 #line 1619 "parser.tab.cpp"
     break;
 
   case 40:
 #line 90 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
 #line 1625 "parser.tab.cpp"
     break;
 
   case 41:
 #line 91 "parser.ypp"
-                                                                    {yyval = new Node((yyvsp[0])->line, yyvsp[-2]->type); symbol_table::get_instance()->check_int(yyvsp[0]);                                      yyval->iid = yyvsp[0]->iid;}
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, yyvsp[-2]->type); symbol_table::get_instance()->check_int(yyvsp[0]);                                      yyval->iid = yyvsp[0]->iid;}
 #line 1631 "parser.tab.cpp"
     break;
 

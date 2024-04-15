@@ -385,6 +385,7 @@ class symbol_table{
         exit(0);
     }
     if(!(v->type == right->type ||(v->type == "INT" && right->type == "BYTE")) ){
+        cout << "error in check_assignment_in" << endl;
         output::errorMismatch(yylineno);
         exit(0);
     }
@@ -420,6 +421,9 @@ void check_call(Node* left, Node* right)
     //check right type with f.args_types first and only member
     if (!(f->arg_type == right->type || (f->arg_type == "INT" && right->type == "BYTE")))
     {
+        cout << "error in check_call" << endl;
+        //print the types
+        cout << f->arg_type << " " << right->type << endl;
         output::errorPrototypeMismatch(yylineno, left_name, f->arg_type);
         exit(0);
     }
@@ -431,7 +435,13 @@ void check_cond(Node* condition)
     //check if type is bool
     if (condition->type != "BOOL")
     {
-        //cout << "error in check_cond" << endl;
+        //check if legal exp node
+        ExpNode* exp = dynamic_cast<ExpNode*>(condition);
+        if (exp!=NULL)
+        {
+            return;
+        }
+        cout << "error in check_cond" << endl;
         output::errorMismatch(yylineno);
         exit(0);
     }
@@ -443,7 +453,7 @@ void check_int(Node* n)
     //check if type is int or byte
     if (n->type != "INT" && n->type != "BYTE")
     {
-        //cout << "error in check_int" << endl;
+        cout << "error in check_int" << endl;
         output::errorMismatch(yylineno);
         exit(0);
     }
