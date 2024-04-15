@@ -1507,7 +1507,7 @@ yyreduce:
 
   case 21:
 #line 67 "parser.ypp"
-   {symbol_table::get_instance()->exit_scope();}
+               {symbol_table::get_instance()->exit_scope();}
 #line 1512 "parser.tab.cpp"
     break;
 

@@ -80,27 +80,31 @@ define i32 @main() {
 %var_49 = alloca i32
 %v_0 = add i32 0, 0
 store i32 %v_0, i32* %var_0
+br label %label_2
+label_2:
 %v_1 = load i32, i32* %var_0
 %v_2 = add i32 0, 3
 %v_3 = icmp slt i32 %v_1, %v_2
-br i1 %v_3, label %label_2, label %label_3
-label_2:
+br i1 %v_3, label %label_3, label %label_4
+label_3:
 %v_4 = add i32 0, 0
 store i32 %v_4, i32* %var_1
+br label %label_5
+label_5:
 %v_5 = load i32, i32* %var_1
 %v_6 = add i32 0, 3
 %v_7 = icmp slt i32 %v_5, %v_6
-br i1 %v_7, label %label_4, label %label_5
-label_4:
+br i1 %v_7, label %label_6, label %label_7
+label_6:
 %v_8 = load i32, i32* %var_0
 %v_9 = load i32, i32* %var_1
 %v_10 = icmp eq i32 %v_8, %v_9
-br i1 %v_10, label %label_6, label %label_7
-br label %label_6
-label_6:
-br label %label_5
+br i1 %v_10, label %label_8, label %label_9
+br label %label_8
+label_8:
 br label %label_7
-label_7:
+br label %label_9
+label_9:
 call void (i8*) @print(i8* getelementptr ([ 2 x i8], [2 x i8]* @.v_11, i32 0, i32 0))
 %v_12 = load i32, i32* %var_0
 call void @printi(i32 %v_12);
@@ -111,9 +115,13 @@ call void @printi(i32 %v_14);
 %v_16 = add i32 0, 1
 %v_17 = add i32 %v_15, %v_16
 store i32 %v_17, i32* %var_1
+br label %label_5
+label_7:
 %v_18 = load i32, i32* %var_0
 %v_19 = add i32 0, 1
 %v_20 = add i32 %v_18, %v_19
 store i32 %v_20, i32* %var_0
+br label %label_2
+label_4:
 ret i32 0
 }

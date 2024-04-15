@@ -26,7 +26,8 @@ define void @print(i8*) {
     ret void
 }
 @.v_11 = private unnamed_addr constant [2 x i8] c"*\00"
-@.v_17 = private unnamed_addr constant [2 x i8] c"*\00"
+@.v_12 = private unnamed_addr constant [3 x i8] c"**\00"
+@.v_18 = private unnamed_addr constant [2 x i8] c"*\00"
 define i32 @main() {
 %var_0 = alloca i32
 %var_1 = alloca i32
@@ -81,13 +82,11 @@ define i32 @main() {
 %v_0 = add i8 0, 0
 %v_1 = zext i8 %v_0 to i32
 store i32 %v_1, i32* %var_0
-br label %label_2
-label_2:
 %v_2 = load i32, i32* %var_0
 %v_3 = add i32 0, 10
 %v_4 = icmp slt i32 %v_2, %v_3
-br i1 %v_4, label %label_3, label %label_4
-label_3:
+br i1 %v_4, label %label_2, label %label_3
+label_2:
 %v_5 = load i32, i32* %var_0
 call void @printi(i32 %v_5);
 %v_6 = load i32, i32* %var_0
@@ -95,20 +94,23 @@ call void @printi(i32 %v_5);
 %v_8 = add i32 %v_6, %v_7
 %v_9 = add i32 0, 10
 %v_10 = icmp slt i32 %v_8, %v_9
-br i1 %v_10, label %label_5, label %label_6
-br label %label_5
-label_5:
+br i1 %v_10, label %label_4, label %label_5
+br label %label_4
+label_4:
 call void (i8*) @print(i8* getelementptr ([ 2 x i8], [2 x i8]* @.v_11, i32 0, i32 0))
 br label %label_6
+br label %label_5
+label_5:
+call void (i8*) @print(i8* getelementptr ([ 3 x i8], [3 x i8]* @.v_12, i32 0, i32 0))
+br label %label_6
 label_6:
-%v_12 = load i32, i32* %var_0
-%v_13 = add i8 0, 1
-%v_14 = zext i8 %v_13 to i32
-%v_15 = add i32 %v_12, %v_14
-%v_16 = and i32 %v_15, 255
-store i32 %v_16, i32* %var_0
-br label %label_2
-label_4:
-call void (i8*) @print(i8* getelementptr ([ 2 x i8], [2 x i8]* @.v_17, i32 0, i32 0))
+%v_13 = load i32, i32* %var_0
+%v_14 = add i8 0, 1
+%v_15 = zext i8 %v_14 to i32
+%v_16 = add i32 %v_13, %v_15
+%v_17 = and i32 %v_16, 255
+store i32 %v_17, i32* %var_0
+br label %label_3:
+call void (i8*) @print(i8* getelementptr ([ 2 x i8], [2 x i8]* @.v_18, i32 0, i32 0))
 ret i32 0
 }

@@ -274,7 +274,7 @@ void store(Node *idNode, Node *exp) {
     if (expNode->type == "Exp")
     {
         //check if true l and false l are initialized
-        if (expNode->true_l == "uninit" || expNode->false_l == "uninit")
+        if (expNode->true_l == "uninit" && expNode->false_l == "uninit")
         {
             aux = true;
         }
@@ -450,7 +450,7 @@ void handle_relop(Node *exp, Node *left, Node *right, Node *op_node) {
     string op = get_operation(((OperationNode *) op_node)->operation);
 
     string temp_var = Var::fresh();
-    //todo: fix error here of use of undefined value %label_3 in (false l)
+    //todo: fix error here of use of undefined value %label_3 ?(false l)
     string cmd = temp_var + " = icmp " + op + " i32 " + left->iid + ", " + right->iid + "\n"
                  + "br i1 " + temp_var + ", label %" + expNode->true_l + ", label %" + expNode->false_l;
     buff.emit(cmd);
@@ -517,7 +517,7 @@ void handle_while(Node *exp) {
     auto expNode = (ExpNode *) exp;
 
     scope->el = expNode->false_l;
-
+    //cout << "el: " << scope->el << endl;
     string cmd = expNode->true_l + ":";
     buff.emit(cmd);
     //cout << "handle while exited\n" << endl;

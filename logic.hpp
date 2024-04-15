@@ -11,6 +11,7 @@
 #include <sstream>
 #include "hw3_output.hpp"
 #include "Node.hpp"
+#include "bp.hpp"
 
 using namespace std;
 extern int yylineno;
@@ -198,9 +199,24 @@ class symbol_table{
         //print creating new scope with offset_bias
         scope* new_scope = new scope(current,scope_type,offset_bias);
         current = new_scope;
+        if (scope_type == "while"){
+            CodeBuffer& buffer = CodeBuffer::instance();
+            current->sl = buffer.freshLabel();
+
+            string cmd  = "br label %" + current->sl + "\n" +
+                     current->sl + ":";
+             buffer.emit(cmd);
+
+        }
     }
     void exit_scope(){
         output::endScope();
+        if (current->scope_type == "while"){
+        CodeBuffer& buffer = CodeBuffer::instance();
+        string cmd = "br label %" + current->sl + "\n" +
+                     current->el + ":";
+        buffer.emit(cmd);
+        }
         for (auto entry: current->entries) {
         auto symbol_type = entry->type;
         //check if fuction entrey with dynamic cast
@@ -385,10 +401,47 @@ class symbol_table{
         exit(0);
     }
     if(!(v->type == right->type ||(v->type == "INT" && right->type == "BYTE")) ){
-        //cout << "error in check_assignment_in" << endl;
+
+        //if right is Exp, check if function
+        function_entry *f = dynamic_cast<function_entry *>(right);
+        if (f != NULL)
+        {
+            //check if the function return type is the same as the left type
+            if (f->type != v->type)
+            {
+                cout << "at least entered" << endl;
+                cout << "error in check_assignment_in" << endl;
+                //print the types
+                cout << v->type << " " << f->type << endl;
+                cout << left_name << endl;
+                output::errorMismatch(yylineno);
+                exit(0);
+            }
+            return;
+        }
+
+        ExpNode* exp = dynamic_cast<ExpNode*>(right);
+        if (exp != NULL)
+        {
+            //print all exp data
+            //cout << exp->type << " " << exp->true_l << " " << exp->false_l << " " << exp->id << endl;
+            //check by type which is iid
+            if (exp->id != v->type)
+            {
+                cout << "error in check_assignment_in" << endl;
+                //print the types
+                cout << v->type << " " << exp->type << endl;
+                cout << left_name << endl;
+                output::errorMismatch(yylineno);
+                exit(0);
+            }
+            return;
+        }
+
+        cout << "error in check_assignment_in" << endl;
         //print the types
-        // cout << v->type << " " << right->type << endl;
-        // cout << left_name << endl;
+        cout << v->type << " " << right->type << endl;
+        cout << left_name << endl;
         output::errorMismatch(yylineno);
         exit(0);
     }

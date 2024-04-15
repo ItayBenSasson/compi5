@@ -82,40 +82,46 @@ define i32 @main() {
 %var_49 = alloca i32
 %v_0 = add i32 0, 8
 store i32 %v_0, i32* %var_0
+br label %label_2
+label_2:
 %v_1 = load i32, i32* %var_0
 %v_2 = add i32 0, 0
 %v_3 = icmp sgt i32 %v_1, %v_2
-br i1 %v_3, label %label_2, label %label_3
-label_2:
+br i1 %v_3, label %label_3, label %label_4
+label_3:
 %v_4 = load i32, i32* %var_0
 %v_5 = add i32 0, 3
 %v_6 = icmp eq i32 %v_4, %v_5
-br i1 %v_6, label %label_4, label %label_5
-br label %label_4
-label_4:
+br i1 %v_6, label %label_5, label %label_6
+br label %label_5
+label_5:
 call void (i8*) @print(i8* getelementptr ([ 5 x i8], [5 x i8]* @.v_7, i32 0, i32 0))
 %v_8 = load i32, i32* %var_0
 %v_9 = add i32 0, 1
 %v_10 = sub i32 %v_8, %v_9
 store i32 %v_10, i32* %var_0
-br label %
-br label %label_5
-label_5:
+br label %label_2
+br label %label_6
+label_6:
 %v_11 = load i32, i32* %var_0
 call void @printi(i32 %v_11);
 %v_12 = load i32, i32* %var_0
 %v_13 = add i32 0, 1
 %v_14 = sub i32 %v_12, %v_13
 store i32 %v_14, i32* %var_0
+br label %label_2
+label_4:
 %v_15 = add i32 0, 10
 store i32 %v_15, i32* %var_1
 %v_16 = load i32, i32* %var_1
 store i32 %v_16, i32* %var_2
+br label %label_7
+label_7:
 %v_17 = load i32, i32* %var_2
 %v_18 = add i32 0, 0
 %v_19 = icmp sgt i32 %v_17, %v_18
-br i1 %v_19, label %label_6, label %label_7
-label_6:
+br i1 %v_19, label %label_8, label %label_9
+label_8:
 %v_20 = load i32, i32* %var_2
 store i32 %v_20, i32* %var_1
 %v_21 = load i32, i32* %var_2
@@ -125,35 +131,43 @@ store i32 %v_23, i32* %var_2
 %v_24 = load i32, i32* %var_1
 %v_25 = add i32 0, 5
 %v_26 = icmp slt i32 %v_24, %v_25
-br i1 %v_26, label %label_8, label %label_9
-br label %label_8
-label_8:
+br i1 %v_26, label %label_10, label %label_11
+br label %label_10
+label_10:
 call void (i8*) @print(i8* getelementptr ([ 5 x i8], [5 x i8]* @.v_27, i32 0, i32 0))
-br label %
-br label %label_9
-label_9:
+br label %label_7
+br label %label_11
+label_11:
 %v_28 = load i32, i32* %var_1
 call void @printi(i32 %v_28);
+br label %label_7
+label_9:
 %v_29 = add i32 0, 10
 store i32 %v_29, i32* %var_3
+br label %label_12
+label_12:
 %v_30 = load i32, i32* %var_3
 %v_31 = add i32 0, 4
 %v_32 = icmp sgt i32 %v_30, %v_31
-br i1 %v_32, label %label_10, label %label_11
-label_10:
+br i1 %v_32, label %label_13, label %label_14
+label_13:
 %v_33 = load i32, i32* %var_3
 %v_34 = add i32 0, 2
 %v_35 = sub i32 %v_33, %v_34
 store i32 %v_35, i32* %var_3
-br label %
+br label %label_12
 call void (i8*) @print(i8* getelementptr ([ 17 x i8], [17 x i8]* @.v_36, i32 0, i32 0))
+br label %label_12
+label_14:
 %v_37 = add i32 0, 5000
 store i32 %v_37, i32* %var_4
+br label %label_15
+label_15:
 %v_38 = load i32, i32* %var_4
 %v_39 = load i32, i32* %var_4
 %v_40 = icmp slt i32 %v_38, %v_39
-br i1 %v_40, label %label_12, label %label_13
-label_12:
+br i1 %v_40, label %label_16, label %label_17
+label_16:
 call void (i8*) @print(i8* getelementptr ([ 17 x i8], [17 x i8]* @.v_41, i32 0, i32 0))
 %v_42 = load i32, i32* %var_0
 %v_43 = load i32, i32* %var_1
@@ -161,14 +175,16 @@ call void (i8*) @print(i8* getelementptr ([ 17 x i8], [17 x i8]* @.v_41, i32 0, 
 %v_45 = load i32, i32* %var_3
 %v_46 = load i32, i32* %var_4
 %v_48 = icmp eq i32 %v_46, 0
-br i1 %v_48, label %label_14, label %label_15
-label_14:
+br i1 %v_48, label %label_18, label %label_19
+label_18:
 call void (i8*) @print(i8* getelementptr ([23 x i8], [23 x i8]* @.zerror, i32 0, i32 0))
 call void @exit(i32 0)
-br label %label_15
-label_15:
+br label %label_19
+label_19:
 %v_47 = sdiv i32 %v_45, %v_46
 %v_49 = add i32 %v_44, %v_47
 store i32 %v_49, i32* %var_4
+br label %label_15
+label_17:
 ret i32 0
 }
