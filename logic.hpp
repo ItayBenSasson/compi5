@@ -389,8 +389,6 @@ class symbol_table{
         exit(0);
     }
 }
-};
-
 
 void check_assignment(Node* left, Node* right)
 {
@@ -476,5 +474,12 @@ string get_op_type(Node* left, Node* right)
     }
     return "INT";
 }
+
+
+
+
+};
+
+
 
 #endif /* logic_hpp */

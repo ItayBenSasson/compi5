@@ -1,5 +1,5 @@
-#ifndef COMPI4_EMIT_HANDLER_H
-#define COMPI4_EMIT_HANDLER_H
+#ifndef EMIT_HANDLER_H
+#define EMIT_HANDLER_H
 
 //#include "Node.hpp"
 #include "bp.hpp"
@@ -55,4 +55,4 @@ void handle_continue();
 
 void handle_call(Node *call, Node *id, Node *arg);
 
-#endif //COMPI4_EMIT_HANDLER_H
+#endif // EMIT_HANDLER_H
