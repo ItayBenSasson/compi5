@@ -109,9 +109,10 @@ public:
     string false_l;
     string id;
 
-    ExpNode(int line) : Node(line, "Exp"), id("shit") {}
-    ExpNode(int line, const char* id) : Node(line, "Exp"), id(id) {}
-    ExpNode(int line, string id) : Node(line, "Exp"), id(id) {}
+    ExpNode(int line) : Node(line, "Exp"), id("shit"), true_l("uninit"), false_l("uninit") {}
+    ExpNode(int line, const char* id) : Node(line, "Exp"), id(id), true_l("uninit"), false_l("uninit") {}
+    ExpNode(int line, string id) : Node(line, "Exp"), id(id), true_l("uninit"), false_l("uninit") {}
+    ExpNode(int line, string to, string id) : Node(line, to), id(id), true_l("uninit"), false_l("uninit") {}
 };
 
 

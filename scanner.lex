@@ -19,8 +19,8 @@ bool 		{yylval = new Node(yylineno); return BOOL;}
 and 		{yylval = new Node(yylineno); return AND;}
 or 			{yylval = new Node(yylineno); return OR;}
 not 		{yylval = new Node(yylineno); return NOT;}
-true 		{yylval = new Node(yylineno); return TRUE;}
-false 		{yylval = new Node(yylineno); return FALSE;}
+true 		{yylval = new BoolNode(yylineno,true); return TRUE;}
+false 		{yylval = new BoolNode(yylineno,false); return FALSE;}
 return 		{yylval = new Node(yylineno); return RETURN;}
 if 			{yylval = new Node(yylineno); return IF;}
 else 		{yylval = new Node(yylineno); return ELSE;}
@@ -33,10 +33,10 @@ continue 	{yylval = new Node(yylineno); return CONTINUE;}
 \{ 			{yylval = new Node(yylineno); return LBRACE;}
 \}			{yylval = new Node(yylineno); return RBRACE;}
 =			{yylval = new Node(yylineno); return ASSIGN;}
-\<|>|<=|>=   {yylval = new Node(yylineno); return RELOP;}
-==|!= 		{yylval = new Node(yylineno); return EQ;}
-\*|\/ 		{yylval = new Node(yylineno); return MULOP;}
-\+|\- 		{yylval = new Node(yylineno); return ADDOP;}
+\<|>|<=|>=   {yylval = new OperationNode(yylineno,yytext); return RELOP;}
+==|!= 		{yylval = new OperationNode(yylineno,yytext); return EQ;}
+\*|\/ 		{yylval = new OperationNode(yylineno,yytext); return MULOP;}
+\+|\- 		{yylval = new OperationNode(yylineno,yytext); return ADDOP;}
 
 [a-zA-Z][a-zA-Z0-9]* {yylval = new IdNode(yylineno, yytext) ;return ID;}
 \/\/[^\r\n]*[\r\n]*		; 

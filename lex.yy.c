@@ -859,12 +859,12 @@ YY_RULE_SETUP
 case 8:
 YY_RULE_SETUP
 #line 22 "scanner.lex"
-{yylval = new Node(yylineno); return TRUE;}
+{yylval = new BoolNode(yylineno,true); return TRUE;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 23 "scanner.lex"
-{yylval = new Node(yylineno); return FALSE;}
+{yylval = new BoolNode(yylineno,false); return FALSE;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
@@ -929,22 +929,22 @@ YY_RULE_SETUP
 case 22:
 YY_RULE_SETUP
 #line 36 "scanner.lex"
-{yylval = new Node(yylineno); return RELOP;}
+{yylval = new OperationNode(yylineno,yytext); return RELOP;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 37 "scanner.lex"
-{yylval = new Node(yylineno); return EQ;}
+{yylval = new OperationNode(yylineno,yytext); return EQ;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 38 "scanner.lex"
-{yylval = new Node(yylineno); return MULOP;}
+{yylval = new OperationNode(yylineno,yytext); return MULOP;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 39 "scanner.lex"
-{yylval = new Node(yylineno); return ADDOP;}
+{yylval = new OperationNode(yylineno,yytext); return ADDOP;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP

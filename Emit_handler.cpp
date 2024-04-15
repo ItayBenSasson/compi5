@@ -187,6 +187,15 @@ void handle_binop(Node *exp, Node *left, Node *right, Node *operation_node) {
     //cout << "handle_binop exited\n" << endl;
 }
 
+void handle_string_value(Node *exp, Node *str){
+    auto expNode = (ExpNode*)exp;
+    auto strNode = (StringNode*)str;
+    expNode->id = strNode->data;
+}
+
+
+
+
 void handle_string(Node *exp, Node *node) {
     //cout << "handle_string entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
@@ -229,6 +238,20 @@ void load(Node *exp, Node *node) {
               + "br i1 " + temp_var + ", label %" + expNode->true_l + ", label %" + expNode->false_l;
         buff.emit(cmd);
     }
+    // else
+    // {
+    //     // cout << "symbol type: " << symbol->type << endl;
+    //     // //todo: was supposed to be bool not sure if true for all cases
+    //     // expNode->true_l = buff.freshLabel();
+    //     // expNode->false_l = buff.freshLabel();
+
+    //     // string temp_var = Var::fresh();
+    //     // cmd = temp_var + " = icmp eq i32 " + var + ", 1" + "\n"
+    //     //       + "br i1 " + temp_var + ", label %" + expNode->true_l + ", label %" + expNode->false_l;
+    //     // buff.emit(cmd);
+    //     // //change type of symbol to BOOL in the symbol table
+    //     // //symbol->type = "BOOL"; //todo: this turned out to be incorrect
+    // }
 
     expNode->iid = var;
     expNode->type = symbol->type;
@@ -245,9 +268,25 @@ void store(Node *idNode, Node *exp) {
     int offset = entry->offset;
 
     auto expNode = (ExpNode *) exp;
-
-    if (expNode->type != "BOOL") {
-        string cmd = "store i32 " + expNode->iid + ", i32* %var_" + to_string(offset);
+   // if (expNode->type != "BOOL" && expNode->type != "EXP") {
+    bool aux = true;
+    if (expNode->type == "Exp")
+    {
+        //check if true l and false l are initialized
+        if (expNode->true_l == "uninit" || expNode->false_l == "uninit")
+        {
+            aux = true;
+        }
+        else
+        {
+            aux = false;
+        }
+    }
+    if (expNode->type != "BOOL" && aux) {
+        
+        //string cmd = "store i32 " + expNode->iid + ", i32* %var_" + to_string(offset);
+        //Todo: fix this
+        string cmd = string(expNode->type)+"store i32 " + string("%v_0") + ", i32* %var_" + to_string(offset);
         buff.emit(cmd);
         //cout << "store exited\n" << endl;
         return;
@@ -257,9 +296,9 @@ void store(Node *idNode, Node *exp) {
     string temp_var = Var::fresh();
     string temp_label = buff.freshLabel();
 
-    string cmd = expNode->true_l + ":\n"
+    string cmd = string(expNode->true_l) + ":\n"
                  + "br label %" + temp_label + "\n"
-                 + expNode->false_l + ":\n"
+                 + string(expNode->false_l) + ":\n"
                  + "br label %" + temp_label + "\n"
                  + temp_label + ":\n"
                  + temp_var + " = phi i32 [1, %" + expNode->true_l + "], [0, %" + expNode->false_l + "]\n"

@@ -454,6 +454,8 @@ void check_int(Node* n)
     if (n->type != "INT" && n->type != "BYTE")
     {
         cout << "error in check_int" << endl;
+        cout << n->type << endl;
+        cout << n->iid << endl;
         output::errorMismatch(yylineno);
         exit(0);
     }
@@ -473,7 +475,6 @@ void check_byte(Node* n)
 
 string get_op_type(Node* left, Node* right)
 {
-    //cout << "get_op_type" << endl;
     //if one of them is does not pass check_int then error
     check_int(left);
     check_int(right);

@@ -17,6 +17,8 @@ void handle_byte(Node *exp, Node *node);
 
 void handle_string(Node *exp, Node *node);
 
+void handle_string_value(Node *exp, Node *str);
+
 void handle_bool(Node *expNode, bool value);
 
 void handle_binop(Node *exp, Node *left, Node *right, Node *op_node);

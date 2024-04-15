@@ -25,10 +25,8 @@ define void @print(i8*) {
     call i32 (i8*, ...) @printf(i8* %spec_ptr, i8* %0)
     ret void
 }
-@.v_3 = private unnamed_addr constant [12 x i8] c"val is true\00"
-@.v_4 = private unnamed_addr constant [13 x i8] c"val is false\00"
-@.v_5 = private unnamed_addr constant [5 x i8] c"true\00"
-@.v_6 = private unnamed_addr constant [5 x i8] c"true\00"
+@.v_11 = private unnamed_addr constant [2 x i8] c"*\00"
+@.v_17 = private unnamed_addr constant [2 x i8] c"*\00"
 define i32 @main() {
 %var_0 = alloca i32
 %var_1 = alloca i32
@@ -80,44 +78,33 @@ define i32 @main() {
 %var_47 = alloca i32
 %var_48 = alloca i32
 %var_49 = alloca i32
-br label %label_2
+%v_0 = add i8 0, 0
+%v_1 = zext i8 %v_0 to i32
+BYTEstore i32 %v_0, i32* %var_0
+%v_2 = load i32, i32* %var_0
+%v_3 = add i32 0, 10
+%v_4 = icmp  i32 %v_2, %v_3
+br i1 %v_4, label %label_2, label %label_3
 label_2:
-br label %label_4
-label_3:
+%v_5 = load i32, i32* %var_0
+call void @printi(i32 %v_5);
+%v_6 = load i32, i32* %var_0
+%v_7 = add i32 0, 1
+%v_8 =  i32 %v_6, %v_7
+%v_9 = add i32 0, 10
+%v_10 = icmp  i32 %v_8, %v_9
+br i1 %v_10, label %label_4, label %label_5
 br label %label_4
 label_4:
-%v_0 = phi i32 [1, %label_2], [0, %label_3]
-store i32 %v_0, i32* %var_0
-%v_1 = load i32, i32* %var_0
-%v_2 = icmp eq i32 %v_1, 1
-br i1 %v_2, label %label_5, label %label_6
+call void (i8*) @print(i8* getelementptr ([ 2 x i8], [2 x i8]* @.v_11, i32 0, i32 0))
 br label %label_5
 label_5:
-call void (i8*) @print(i8* getelementptr ([ 12 x i8], [12 x i8]* @.v_3, i32 0, i32 0))
-br label %label_7
-br label %label_6
-label_6:
-call void (i8*) @print(i8* getelementptr ([ 13 x i8], [13 x i8]* @.v_4, i32 0, i32 0))
-br label %label_7
-label_7:
-br label %label_8
-br label %label_8
-label_8:
-call void (i8*) @print(i8* getelementptr ([ 5 x i8], [5 x i8]* @.v_5, i32 0, i32 0))
-br label %label_9
-label_9:
-br label %label_11
-br label %label_13
-br label %label_14
-br label %label_13
-label_13:
-br label %label_15
-label_10:
-br label %label_14
-br label %label_14
-label_14:
-call void (i8*) @print(i8* getelementptr ([ 5 x i8], [5 x i8]* @.v_6, i32 0, i32 0))
-br label %label_15
-label_15:
+%v_12 = load i32, i32* %var_0
+%v_13 = add i8 0, 1
+%v_14 = zext i8 %v_13 to i32
+%v_15 =  i32 %v_12, %v_14
+%v_16 = and i32 %v_15, 255
+BYTEstore i32 %v_0, i32* %var_0
+call void (i8*) @print(i8* getelementptr ([ 2 x i8], [2 x i8]* @.v_17, i32 0, i32 0))
 ret i32 0
 }
