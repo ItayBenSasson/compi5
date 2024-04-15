@@ -13,6 +13,8 @@
 #include "Node.hpp"
 #include "bp.hpp"
 
+
+
 using namespace std;
 extern int yylineno;
 
@@ -542,8 +544,11 @@ string get_op_type(Node* left, Node* right)
     }
     return "INT";
 }
-};
 
+
+
+
+};
 
 class Var {
     string base;
@@ -564,50 +569,6 @@ public:
         return v.base + to_string(v.count++);
     }
 };
-
-
-
-void handle_call(Node *call, Node *id, Node *arg) {
-    //cout << "handle_call entered\n" << endl;
-    CodeBuffer& buff = CodeBuffer::instance();
-
-    string function_name = ((IdNode *) id)->id;
-    int size = ((ExpNode *) arg)->id.size() - 1;
-    string cmd;
-    if (function_name == "print")
-        cmd = "call void (i8*) @print(i8* getelementptr ([ " + to_string(size) + " x i8], [" + to_string(size) +
-              " x i8]* " + arg->iid + ", i32 0, i32 0))";
-    else if (function_name == "printi")
-        cmd = "call void @printi(i32 " + arg->iid + ");";
-    else if (function_name == "readi") {
-        call->iid = Var::fresh();;
-        cmd = call->iid + " = call i32 @readi(i32 " + "0" + ");";
-    }
-
-    buff.emit(cmd);
-    //cout << "handle_call exited\n" << endl;
-}
-
-void check_div_by_zero(Node *node) {
-    //cout << "check_div_by_zero entered\n" << endl;
-    CodeBuffer& buff = CodeBuffer::instance();
-
-    string temp_var = Var::fresh();
-    string true_label = buff.freshLabel();
-    string false_label = buff.freshLabel();
-
-    string cmd = temp_var + " = icmp eq i32 " + node->iid + ", 0" + "\n"
-                 + "br i1 " + temp_var + ", label %" + true_label + ", label %" + false_label + "\n"
-                 + true_label + ":" + "\n"
-                 + "call void (i8*) @print(i8* getelementptr ([23 x i8], [23 x i8]* @.zerror, i32 0, i32 0))" + "\n"
-                 + "call void @exit(i32 0)" + "\n"
-                 "br label %" + false_label + "\n"
-                 + false_label + ":";
-
-    buff.emit(cmd);
-    //cout << "check_div_by_zero exited\n" << endl;
-}
-
 
 string get_operation(const string& raw_operation) {
     //cout << "get_operation entered\n" << endl;
@@ -695,8 +656,6 @@ void handle_start() {
 }
 
 
-
-
 void handle_return() {
     //cout << "handle_ret entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
@@ -721,19 +680,7 @@ void handle_end() {
 }
 
 
-void handle_number(Node *exp, Node *node) {
-    //cout << "handle_num entered\n" << endl;
-    CodeBuffer& buff = CodeBuffer::instance();
 
-    string var = Var::fresh();
-
-    auto value = ((IntNode *) node)->data;
-    string cmd = var + " = add i32 0, " + to_string(value);
-    buff.emit(cmd);
-
-    exp->iid = var;
-    //cout << "handle_num exited\n" << endl;
-}
 
 void handle_byte(Node *exp, Node *node) {
     //cout << "handle_byte entered\n" << endl;
@@ -751,6 +698,40 @@ void handle_byte(Node *exp, Node *node) {
     //cout << "handle_byte exited\n" << endl;
 }
 
+void check_div_by_zero(Node *node) {
+    //cout << "check_div_by_zero entered\n" << endl;
+    CodeBuffer& buff = CodeBuffer::instance();
+
+    string temp_var = Var::fresh();
+    string true_label = buff.freshLabel();
+    string false_label = buff.freshLabel();
+
+    string cmd = temp_var + " = icmp eq i32 " + node->iid + ", 0" + "\n"
+                 + "br i1 " + temp_var + ", label %" + true_label + ", label %" + false_label + "\n"
+                 + true_label + ":" + "\n"
+                 + "call void (i8*) @print(i8* getelementptr ([23 x i8], [23 x i8]* @.zerror, i32 0, i32 0))" + "\n"
+                 + "call void @exit(i32 0)" + "\n"
+                                              "br label %" + false_label + "\n"
+                 + false_label + ":";
+
+    buff.emit(cmd);
+    //cout << "check_div_by_zero exited\n" << endl;
+}
+
+
+void handle_number(Node *exp, Node *node) {
+    //cout << "handle_num entered\n" << endl;
+    CodeBuffer& buff = CodeBuffer::instance();
+
+    string var = Var::fresh();
+
+    auto value = ((IntNode *) node)->data;
+    string cmd = var + " = add i32 0, " + to_string(value);
+    buff.emit(cmd);
+
+    exp->iid = var;
+    //cout << "handle_num exited\n" << endl;
+}
 void handle_bin_operation(Node *exp, Node *left, Node *right, Node *operation_node) {
     //cout << "handle_binop entered\n" << endl;
     CodeBuffer& buff = CodeBuffer::instance();
@@ -860,7 +841,7 @@ void store(Node *idNode, Node *exp) {
     int offset = entry->offset;
 
     auto expNode = (ExpNode *) exp;
-   // if (expNode->type != "BOOL" && expNode->type != "EXP") {
+    // if (expNode->type != "BOOL" && expNode->type != "EXP") {
     bool aux = true;
     if (expNode->type == "Exp")
     {
@@ -1116,6 +1097,32 @@ void handle_continue() {
     buff.emit(cmd);
     //cout << "handle_continue exited\n" << endl;
 }
+
+
+void handle_call(Node *call, Node *id, Node *arg) {
+    //cout << "handle_call entered\n" << endl;
+    CodeBuffer& buff = CodeBuffer::instance();
+
+    string function_name = ((IdNode *) id)->id;
+    int size = ((ExpNode *) arg)->id.size() - 1;
+    string cmd;
+    if (function_name == "print")
+        cmd = "call void (i8*) @print(i8* getelementptr ([ " + to_string(size) + " x i8], [" + to_string(size) +
+              " x i8]* " + arg->iid + ", i32 0, i32 0))";
+    else if (function_name == "printi")
+        cmd = "call void @printi(i32 " + arg->iid + ");";
+    else if (function_name == "readi") {
+        call->iid = Var::fresh();;
+        cmd = call->iid + " = call i32 @readi(i32 " + "0" + ");";
+    }
+
+    buff.emit(cmd);
+    //cout << "handle_call exited\n" << endl;
+}
+
+
+
+
 
 
 
