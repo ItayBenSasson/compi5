@@ -54,6 +54,10 @@ class scope{
     vector<entry*> entries;
     string scope_type;
     scope* parent;
+
+    string sl;
+    string el;
+
     scope(scope* parent, string scope_type):parent(parent),scope_type(scope_type), offset_bias(0)
     {
         if (parent==NULL && scope_type=="global"){

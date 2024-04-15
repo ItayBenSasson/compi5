@@ -1,7 +1,7 @@
 #ifndef COMPI4_EMIT_HANDLER_H
 #define COMPI4_EMIT_HANDLER_H
 
-#include "Node.hpp"
+//#include "Node.hpp"
 #include "bp.hpp"
 #include "logic.hpp"
 

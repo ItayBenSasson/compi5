@@ -1,6 +1,6 @@
 #include "Emit_handler.h"
-#include "bp.hpp"
-#include <iostream>
+//#include "bp.hpp"
+//#include <iostream>
 
 class Var {
     string base;
@@ -367,15 +367,18 @@ void handle_label(Node *exp, bool value) {
     buff.emit(cmd);
 }
 
-// TODO: dont think we have a sorted type for this, not sure what was expected to be created
 Node *create_end_label() {
     CodeBuffer& buff = CodeBuffer::instance();
 
-    auto end_label = new ExpNode(UNDEFINED_TYPE, 0);
-    end_label->true_label = buff.freshLabel();
+    auto end_label = new ExpNode(0);
+    end_label->true_l = buff.freshLabel();
 
     return end_label;
 }
+
+    
+
+
 
 void jmp_end_label(Node *end_label) {
     CodeBuffer& buff = CodeBuffer::instance();
@@ -385,49 +388,44 @@ void jmp_end_label(Node *end_label) {
     buff.emit(cmd);
 }
 
-// TODO: make this work, dont think we have a scope list,
-//  i think we went by parents, also no block types that i found
-
 scope *find_last_while() {
-    auto scopes = symbol_table::get_instance()->scopes;
-    for (int i = scopes.size() - 1; i >= 0; i--) {
-        if (scopes[i]->block_type == WHILE_BLOCK) {
-            return scopes[i];
+    scope* s = symbol_table::get_instance()->current;
+    while (s != NULL){
+        if (s->scope_type == "while"){
+            return s;
         }
+        s = s->parent;
     }
     return nullptr;
 }
 
-//TODO: also dependant on the last part, creating end labels
 void handle_while(Node *exp) {
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto scope = find_last_while();
     auto expNode = (ExpNode *) exp;
 
-    scope->end_label = expNode->false_l;
+    scope->el = expNode->false_l;
 
     string cmd = expNode->true_l + ":";
     buff.emit(cmd);
 }
 
-//TODO: also dependant on the last part, creating end labels
 void handle_break() {
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto scope = find_last_while();
 
-    string cmd = "br label %" + scope->end_label;
+    string cmd = "br label %" + scope->el;
     buff.emit(cmd);
 }
 
-//TODO: also dependant on the last part, creating start labels
 void handle_continue() {
     CodeBuffer& buff = CodeBuffer::instance();
 
     auto scope = find_last_while();
 
-    string cmd = "br label %" + scope->start_label;
+    string cmd = "br label %" + scope->sl;
     buff.emit(cmd);
 }
 
