@@ -381,6 +381,8 @@ void and_left_part(Node *left) {
                  + leftExp->true_l + ":";
     buff.emit(cmd);
     //cout << "and_left_part exited\n" << endl;
+    //change type to BOOL
+    left->type = "BOOL";
 }
 
 void and_right_part(Node *exp, Node *left, Node *right) {
@@ -399,6 +401,8 @@ void and_right_part(Node *exp, Node *left, Node *right) {
                  + "br label %" + expNode->false_l;
     buff.emit(cmd);
     //cout << "and_right_part exited\n" << endl;
+    //change type to BOOL
+    exp->type = "BOOL";
 }
 
 void or_left_part(Node *left) {
@@ -410,6 +414,8 @@ void or_left_part(Node *left) {
     string cmd = leftExp->false_l + ":";
     buff.emit(cmd);
     //cout << "or_left_part exited\n" << endl;
+    //change type to BOOL
+    left->type = "BOOL";
 }
 
 void or_right_part(Node *exp, Node *left, Node *right) {
@@ -427,6 +433,9 @@ void or_right_part(Node *exp, Node *left, Node *right) {
                  + "br label %" + expNode->true_l;
     buff.emit(cmd);
     //cout << "or_right_part exited\n" << endl;
+    //change type to BOOL
+    exp->type = "BOOL";
+
 }
 
 void handle_relop(Node *exp, Node *left, Node *right, Node *op_node) {

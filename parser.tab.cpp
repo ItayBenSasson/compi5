@@ -476,16 +476,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  24
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   149
+#define YYLAST   153
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  31
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  13
+#define YYNNTS  15
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  41
+#define YYNRULES  43
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  78
+#define YYNSTATES  80
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   285
@@ -538,8 +538,8 @@ static const yytype_int8 yyrline[] =
        0,    48,    48,    50,    51,    53,    53,    54,    55,    56,
       57,    58,    59,    60,    60,    61,    61,    61,    62,    63,
       66,    67,    69,    72,    73,    74,    76,    77,    78,    79,
-      80,    81,    82,    83,    84,    85,    86,    87,    88,    89,
-      90,    91
+      80,    81,    82,    83,    84,    85,    86,    87,    87,    88,
+      88,    89,    90,    91
 };
 #endif
 
@@ -553,7 +553,7 @@ static const char *const yytname[] =
   "LBRACE", "RBRACE", "NUM", "ID", "STRING", "ASSIGN", "OR", "AND", "EQ",
   "RELOP", "ADDOP", "MULOP", "LPAREN", "RPAREN", "ELSE", "$accept",
   "Program", "Statements", "Statement", "$@1", "@2", "$@3", "$@4", "A",
-  "C", "Call", "Type", "Exp", YY_NULLPTR
+  "C", "Call", "Type", "Exp", "$@5", "$@6", YY_NULLPTR
 };
 #endif
 
@@ -583,14 +583,14 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      85,   -22,   -22,   -22,     4,   -21,   -22,     7,    11,   -22,
-      -8,    24,    85,   -22,    12,    19,   -22,    -3,    21,   -22,
-     -22,    85,    -3,    -3,   -22,   -22,   -22,    46,    -3,   -22,
-     -22,    54,    32,   -22,    38,    34,   -22,   117,    -3,    68,
-      28,    93,   -22,    -3,   -22,   -22,    35,   101,    85,    -3,
-      -3,    -3,    -3,    -3,    -3,   109,   -22,   -22,   -22,    87,
-      -3,   -22,   -22,   122,    81,   -16,     9,    41,   -22,   -22,
-     -22,   -22,    39,    85,   -22,   -22,    85,   -22
+      87,   -22,   -22,   -22,     4,   -21,   -22,     7,    11,   -22,
+      -8,    27,    87,   -22,    14,    16,   -22,    -3,     8,   -22,
+     -22,    87,    -3,    -3,   -22,   -22,   -22,     9,    -3,   -22,
+     -22,    33,    17,   -22,    43,    30,   -22,   117,    -3,    70,
+      89,    31,   -22,    -3,   -22,   -22,    36,   101,    87,   -22,
+     -22,    -3,    -3,    -3,    -3,   109,   -22,   -22,   -22,    95,
+      -3,   -22,   -22,    -3,    -3,   -16,    15,    39,   -22,   -22,
+     -22,   -22,    38,   122,   126,    87,   -22,   -22,    87,   -22
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -602,24 +602,24 @@ static const yytype_int8 yydefact[] =
        0,     0,     2,     3,     0,     0,    11,     0,     0,    18,
       19,     0,     0,     0,     1,     4,    10,     0,     0,    34,
       35,    31,    29,    33,     0,     0,    30,    20,     0,     0,
-       0,     0,     7,     0,    36,    32,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     6,     9,    22,     0,
-       0,    26,    21,    38,    37,    39,    40,    27,    28,    16,
-       8,    41,    12,     0,    13,    17,     0,    14
+       0,     0,     7,     0,    36,    32,     0,     0,     0,    39,
+      37,     0,     0,     0,     0,     0,     6,     9,    22,     0,
+       0,    26,    21,     0,     0,    41,    42,    27,    28,    16,
+       8,    43,    12,    40,    38,     0,    13,    17,     0,    14
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -22,   -22,    49,   -11,   -22,   -22,   -22,   -22,   -22,   -22,
-       0,    43,   -20
+     -22,   -22,    48,   -11,   -22,   -22,   -22,   -22,   -22,   -22,
+       0,    45,   -20,   -22,   -22
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,    11,    12,    13,    21,    76,    18,    73,    35,    72,
-      36,    15,    37
+      -1,    11,    12,    13,    21,    78,    18,    75,    35,    72,
+      36,    15,    37,    64,    63
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -629,38 +629,40 @@ static const yytype_int8 yytable[] =
 {
       14,    25,    40,    41,    28,    29,    30,    17,    44,    52,
       53,    54,    14,    22,    47,    31,    32,    33,    55,    16,
-      23,    14,    19,    59,    24,    34,    20,    26,    25,    63,
-      64,    65,    66,    67,    68,    53,    54,    62,    27,    14,
-      71,     1,     2,    57,     3,    28,    29,    30,    14,    38,
-      49,    50,    51,    52,    53,    54,    31,    32,    33,    45,
-      23,    42,    75,    48,    60,    77,    34,    43,    54,    74,
-      39,     1,     2,    14,     3,     0,    14,    46,     4,     5,
-       6,     7,     8,     0,     9,    56,     0,    10,     1,     2,
-       0,     3,     0,     0,     0,     4,     5,     6,     7,     8,
-       0,     9,    70,     0,    10,    51,    52,    53,    54,    49,
-      50,    51,    52,    53,    54,    49,    50,    51,    52,    53,
-      54,     0,    58,    49,    50,    51,    52,    53,    54,     0,
+      23,    14,    19,    59,    42,    34,    20,    24,    25,    26,
+      43,    65,    66,    67,    68,    27,    38,    62,    45,    14,
+      71,    53,    54,    73,    74,    23,     1,     2,    14,     3,
+      28,    29,    30,    49,    50,    51,    52,    53,    54,    48,
+      58,    31,    32,    33,    77,    60,    54,    79,    76,    39,
+       0,    34,     0,     1,     2,    14,     3,     0,    14,    46,
+       4,     5,     6,     7,     8,     0,     9,    56,     0,    10,
+       1,     2,     0,     3,     0,     0,     0,     4,     5,     6,
+       7,     8,     0,     9,    57,     0,    10,     0,     0,     0,
+      70,    49,    50,    51,    52,    53,    54,    49,    50,    51,
+      52,    53,    54,    49,    50,    51,    52,    53,    54,     0,
       61,    49,    50,    51,    52,    53,    54,     0,    69,    49,
-      50,    51,    52,    53,    54,    50,    51,    52,    53,    54
+      50,    51,    52,    53,    54,    50,    51,    52,    53,    54,
+      51,    52,    53,    54
 };
 
 static const yytype_int8 yycheck[] =
 {
        0,    12,    22,    23,     7,     8,     9,    28,    28,    25,
       26,    27,    12,    21,    34,    18,    19,    20,    38,    15,
-      28,    21,    15,    43,     0,    28,    15,    15,    39,    49,
-      50,    51,    52,    53,    54,    26,    27,    48,    19,    39,
-      60,     3,     4,    15,     6,     7,     8,     9,    48,    28,
-      22,    23,    24,    25,    26,    27,    18,    19,    20,     5,
-      28,    15,    73,    29,    29,    76,    28,    21,    27,    30,
-      21,     3,     4,    73,     6,    -1,    76,    34,    10,    11,
-      12,    13,    14,    -1,    16,    17,    -1,    19,     3,     4,
-      -1,     6,    -1,    -1,    -1,    10,    11,    12,    13,    14,
-      -1,    16,    15,    -1,    19,    24,    25,    26,    27,    22,
-      23,    24,    25,    26,    27,    22,    23,    24,    25,    26,
-      27,    -1,    29,    22,    23,    24,    25,    26,    27,    -1,
+      28,    21,    15,    43,    15,    28,    15,     0,    39,    15,
+      21,    51,    52,    53,    54,    19,    28,    48,     5,    39,
+      60,    26,    27,    63,    64,    28,     3,     4,    48,     6,
+       7,     8,     9,    22,    23,    24,    25,    26,    27,    29,
+      29,    18,    19,    20,    75,    29,    27,    78,    30,    21,
+      -1,    28,    -1,     3,     4,    75,     6,    -1,    78,    34,
+      10,    11,    12,    13,    14,    -1,    16,    17,    -1,    19,
+       3,     4,    -1,     6,    -1,    -1,    -1,    10,    11,    12,
+      13,    14,    -1,    16,    15,    -1,    19,    -1,    -1,    -1,
+      15,    22,    23,    24,    25,    26,    27,    22,    23,    24,
+      25,    26,    27,    22,    23,    24,    25,    26,    27,    -1,
       29,    22,    23,    24,    25,    26,    27,    -1,    29,    22,
-      23,    24,    25,    26,    27,    23,    24,    25,    26,    27
+      23,    24,    25,    26,    27,    23,    24,    25,    26,    27,
+      24,    25,    26,    27
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -673,8 +675,8 @@ static const yytype_int8 yystos[] =
        9,    18,    19,    20,    28,    39,    41,    43,    28,    33,
       43,    43,    15,    21,    43,     5,    42,    43,    29,    22,
       23,    24,    25,    26,    27,    43,    17,    15,    29,    43,
-      29,    29,    34,    43,    43,    43,    43,    43,    43,    29,
-      15,    43,    40,    38,    30,    34,    36,    34
+      29,    29,    34,    45,    44,    43,    43,    43,    43,    29,
+      15,    43,    40,    43,    43,    38,    30,    34,    36,    34
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -683,8 +685,8 @@ static const yytype_int8 yyr1[] =
        0,    31,    32,    33,    33,    35,    34,    34,    34,    34,
       34,    34,    34,    36,    34,    37,    38,    34,    34,    34,
       39,    40,    41,    42,    42,    42,    43,    43,    43,    43,
-      43,    43,    43,    43,    43,    43,    43,    43,    43,    43,
-      43,    43
+      43,    43,    43,    43,    43,    43,    43,    44,    43,    45,
+      43,    43,    43,    43
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -693,8 +695,8 @@ static const yytype_int8 yyr2[] =
        0,     2,     1,     1,     2,     0,     4,     3,     5,     4,
        2,     2,     6,     0,     9,     0,     0,     7,     2,     2,
        1,     0,     4,     1,     1,     1,     3,     3,     3,     1,
-       1,     1,     2,     1,     1,     1,     2,     3,     3,     3,
-       3,     4
+       1,     1,     2,     1,     1,     1,     2,     0,     4,     0,
+       4,     3,     3,     4
 };
 
 
@@ -1392,246 +1394,258 @@ yyreduce:
   case 2:
 #line 48 "parser.ypp"
                                                                      {symbol_table::get_instance()->exit_scope();}
-#line 1396 "parser.tab.cpp"
+#line 1398 "parser.tab.cpp"
     break;
 
   case 3:
 #line 50 "parser.ypp"
                                                                     {}
-#line 1402 "parser.tab.cpp"
+#line 1404 "parser.tab.cpp"
     break;
 
   case 4:
 #line 51 "parser.ypp"
                                                                     {}
-#line 1408 "parser.tab.cpp"
+#line 1410 "parser.tab.cpp"
     break;
 
   case 5:
 #line 53 "parser.ypp"
                   {symbol_table::get_instance()->enter_scope("brace");}
-#line 1414 "parser.tab.cpp"
+#line 1416 "parser.tab.cpp"
     break;
 
   case 6:
 #line 53 "parser.ypp"
                                                                                                  {symbol_table::get_instance()->exit_scope();}
-#line 1420 "parser.tab.cpp"
+#line 1422 "parser.tab.cpp"
     break;
 
   case 7:
 #line 54 "parser.ypp"
                                                                     {symbol_table::get_instance()->add_entry(yyvsp[-1], (yyvsp[-2])->type);                                store_default(yyvsp[-1]);}
-#line 1426 "parser.tab.cpp"
+#line 1428 "parser.tab.cpp"
     break;
 
   case 8:
 #line 55 "parser.ypp"
                                                                     {symbol_table::get_instance()->add_entry(yyvsp[-3], yyvsp[-4], (yyvsp[-4])->type); symbol_table::get_instance()->check_assignment(yyvsp[-3], yyvsp[-1]);  store(yyvsp[-3], yyvsp[-1]);             }
-#line 1432 "parser.tab.cpp"
+#line 1434 "parser.tab.cpp"
     break;
 
   case 9:
 #line 56 "parser.ypp"
                                                                      {symbol_table::get_instance()->check_assignment(yyvsp[-3], yyvsp[-1]);                                                              store(yyvsp[-3], yyvsp[-1]);}
-#line 1438 "parser.tab.cpp"
+#line 1440 "parser.tab.cpp"
     break;
 
   case 10:
 #line 57 "parser.ypp"
                                                                     {}
-#line 1444 "parser.tab.cpp"
+#line 1446 "parser.tab.cpp"
     break;
 
   case 11:
 #line 58 "parser.ypp"
                                                                                                                                                              {handle_ret();}
-#line 1450 "parser.tab.cpp"
+#line 1452 "parser.tab.cpp"
     break;
 
   case 12:
 #line 59 "parser.ypp"
                                                                                                                                                              {handle_label(yyvsp[-3], false);}
-#line 1456 "parser.tab.cpp"
+#line 1458 "parser.tab.cpp"
     break;
 
   case 13:
 #line 60 "parser.ypp"
                                                  {yyval = create_end_label(); jmp_end_label(yyval); handle_label(yyvsp[-4], false); symbol_table::get_instance()->enter_scope("else");}
-#line 1462 "parser.tab.cpp"
+#line 1464 "parser.tab.cpp"
     break;
 
   case 14:
 #line 60 "parser.ypp"
                                                                                                                                                                                      {symbol_table::get_instance()->exit_scope(); handle_label(yyvsp[-1], true);}
-#line 1468 "parser.tab.cpp"
+#line 1470 "parser.tab.cpp"
     break;
 
   case 15:
 #line 61 "parser.ypp"
                    {symbol_table::get_instance()->enter_scope("while");}
-#line 1474 "parser.tab.cpp"
+#line 1476 "parser.tab.cpp"
     break;
 
   case 16:
 #line 61 "parser.ypp"
                                                                                            {handle_while(yyvsp[-1]);}
-#line 1480 "parser.tab.cpp"
+#line 1482 "parser.tab.cpp"
     break;
 
   case 17:
 #line 61 "parser.ypp"
                                                                                                                          {symbol_table::get_instance()->exit_scope();}
-#line 1486 "parser.tab.cpp"
+#line 1488 "parser.tab.cpp"
     break;
 
   case 18:
 #line 62 "parser.ypp"
                                                                     {symbol_table::get_instance()->check_while();                                             handle_break();}
-#line 1492 "parser.tab.cpp"
+#line 1494 "parser.tab.cpp"
     break;
 
   case 19:
 #line 63 "parser.ypp"
                                                                     {symbol_table::get_instance()->check_continue();                                          handle_continue();}
-#line 1498 "parser.tab.cpp"
+#line 1500 "parser.tab.cpp"
     break;
 
   case 20:
 #line 66 "parser.ypp"
-       {symbol_table::get_instance()->enter_scope("if"); symbol_table::get_instance()->check_cond(yyvsp[0]);  handle_label(yyvsp[0], true);}
-#line 1504 "parser.tab.cpp"
+       {symbol_table::get_instance()->enter_scope("if"); symbol_table::get_instance()->check_cond(yyvsp[0]); yyval= yyvsp[0]; handle_label(yyvsp[0], true);}
+#line 1506 "parser.tab.cpp"
     break;
 
   case 21:
 #line 67 "parser.ypp"
    {symbol_table::get_instance()->exit_scope();}
-#line 1510 "parser.tab.cpp"
+#line 1512 "parser.tab.cpp"
     break;
 
   case 22:
 #line 69 "parser.ypp"
                                                                     {symbol_table::get_instance()->check_call(yyvsp[-3], yyvsp[-1]);
                                                                     yyval = new ExpNode((yyvsp[-1])->line,symbol_table::get_instance()->get_func_type(yyvsp[-3]));                handle_call(yyval, yyvsp[-3], yyvsp[-1]);}
-#line 1517 "parser.tab.cpp"
+#line 1519 "parser.tab.cpp"
     break;
 
   case 23:
 #line 72 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, "INT", "INT");}
-#line 1523 "parser.tab.cpp"
+#line 1525 "parser.tab.cpp"
     break;
 
   case 24:
 #line 73 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, "BYTE", "BYTE");}
-#line 1529 "parser.tab.cpp"
+#line 1531 "parser.tab.cpp"
     break;
 
   case 25:
 #line 74 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, "BOOL", "BOOL");}
-#line 1535 "parser.tab.cpp"
+#line 1537 "parser.tab.cpp"
     break;
 
   case 26:
 #line 76 "parser.ypp"
                                                                      {yyval = yyvsp[-1];}
-#line 1541 "parser.tab.cpp"
+#line 1543 "parser.tab.cpp"
     break;
 
   case 27:
 #line 77 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[-1])->line, symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]), symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]));                                          handle_binop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
-#line 1547 "parser.tab.cpp"
+#line 1549 "parser.tab.cpp"
     break;
 
   case 28:
 #line 78 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[-1])->line, symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]), symbol_table::get_instance()->get_op_type(yyvsp[-2], yyvsp[0]));                                          handle_binop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
-#line 1553 "parser.tab.cpp"
+#line 1555 "parser.tab.cpp"
     break;
 
   case 29:
 #line 79 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, symbol_table::get_instance()->get_var_type(yyvsp[0]), symbol_table::get_instance()->get_var_type(yyvsp[0]));               load(yyval, yyvsp[0]);}
-#line 1559 "parser.tab.cpp"
+#line 1561 "parser.tab.cpp"
     break;
 
   case 30:
 #line 80 "parser.ypp"
                                                                     {yyval = yyvsp[0];}
-#line 1565 "parser.tab.cpp"
+#line 1567 "parser.tab.cpp"
     break;
 
   case 31:
 #line 81 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, "INT", "INT");                                                        handle_num(yyval, yyvsp[0]);}
-#line 1571 "parser.tab.cpp"
+#line 1573 "parser.tab.cpp"
     break;
 
   case 32:
 #line 82 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[-1])->line, "BYTE", "BYTE"); symbol_table::get_instance()->check_byte(yyvsp[-1]);                                       handle_byte(yyval, yyvsp[-1]);}
-#line 1577 "parser.tab.cpp"
+#line 1579 "parser.tab.cpp"
     break;
 
   case 33:
 #line 83 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, "STRING", "STRING");                                                handle_string_value(yyval, yyvsp[0]);      handle_string(yyval, yyvsp[0]);}
-#line 1583 "parser.tab.cpp"
+#line 1585 "parser.tab.cpp"
     break;
 
   case 34:
 #line 84 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, "BOOL", "BOOL");                                                       handle_bool(yyval, true);}
-#line 1589 "parser.tab.cpp"
+#line 1591 "parser.tab.cpp"
     break;
 
   case 35:
 #line 85 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[0])->line, "BOOL", "BOOL");                                                       handle_bool(yyval, false);}
-#line 1595 "parser.tab.cpp"
+#line 1597 "parser.tab.cpp"
     break;
 
   case 36:
 #line 86 "parser.ypp"
                                                                     {yyval = new ExpNode((yyvsp[-1])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[0]);                                       not_expression(yyval, yyvsp[0]);}
-#line 1601 "parser.tab.cpp"
+#line 1603 "parser.tab.cpp"
     break;
 
   case 37:
 #line 87 "parser.ypp"
-                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-2]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       and_right_part(yyval, yyvsp[-2], yyvsp[0]);}
-#line 1607 "parser.tab.cpp"
+               {and_left_part(yyvsp[-1]);}
+#line 1609 "parser.tab.cpp"
     break;
 
   case 38:
-#line 88 "parser.ypp"
-                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-2]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       or_right_part(yyval, yyvsp[-2], yyvsp[0]);}
-#line 1613 "parser.tab.cpp"
+#line 87 "parser.ypp"
+                                                                                         {yyval = new ExpNode((yyvsp[-2])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-3]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       and_right_part(yyval, yyvsp[-3], yyvsp[0]);}
+#line 1615 "parser.tab.cpp"
     break;
 
   case 39:
-#line 89 "parser.ypp"
-                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
-#line 1619 "parser.tab.cpp"
+#line 88 "parser.ypp"
+               {or_left_part(yyvsp[-1]); }
+#line 1621 "parser.tab.cpp"
     break;
 
   case 40:
-#line 90 "parser.ypp"
-                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
-#line 1625 "parser.tab.cpp"
+#line 88 "parser.ypp"
+                                                                                          {yyval = new ExpNode((yyvsp[-2])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_cond(yyvsp[-3]); symbol_table::get_instance()->check_cond(yyvsp[0]);                       or_right_part(yyval, yyvsp[-3], yyvsp[0]);}
+#line 1627 "parser.tab.cpp"
     break;
 
   case 41:
+#line 89 "parser.ypp"
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
+#line 1633 "parser.tab.cpp"
+    break;
+
+  case 42:
+#line 90 "parser.ypp"
+                                                                    {yyval = new ExpNode((yyvsp[-1])->line, "BOOL", "BOOL"); symbol_table::get_instance()->check_int(yyvsp[-2]); symbol_table::get_instance()->check_int(yyvsp[0]);                         handle_relop(yyval, yyvsp[-2], yyvsp[0], yyvsp[-1]);}
+#line 1639 "parser.tab.cpp"
+    break;
+
+  case 43:
 #line 91 "parser.ypp"
-                                                                    {yyval = new ExpNode((yyvsp[0])->line, yyvsp[-2]->type); symbol_table::get_instance()->check_int(yyvsp[0]);                                      yyval->iid = yyvsp[0]->iid;}
-#line 1631 "parser.tab.cpp"
+                                                                    {yyval = new ExpNode((yyvsp[0])->line, yyvsp[-2]->type, yyvsp[-2]->type); symbol_table::get_instance()->check_int(yyvsp[0]);                                      yyval->iid = yyvsp[0]->iid;}
+#line 1645 "parser.tab.cpp"
     break;
 
 
-#line 1635 "parser.tab.cpp"
+#line 1649 "parser.tab.cpp"
 
       default: break;
     }

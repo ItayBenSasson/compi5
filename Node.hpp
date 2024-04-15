@@ -85,7 +85,7 @@ public:
     bool data;
     BoolNode(int line, bool data) : Node(line, "BOOL"), data(data) {}
     //now one that takes different type name
-    BoolNode(int line, bool data, string type) : Node(line, type), data(data) {}
+    //BoolNode(int line, bool data, string type) : Node(line, type), data(data) {}
 };
 
 class IdNode : public Node {

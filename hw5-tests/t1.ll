@@ -107,7 +107,10 @@ call void (i8*) @print(i8* getelementptr ([ 5 x i8], [5 x i8]* @.v_5, i32 0, i32
 br label %label_9
 label_9:
 br label %label_11
+label_11:
 br label %label_13
+br label %label_12
+label_12:
 br label %label_14
 br label %label_13
 label_13:

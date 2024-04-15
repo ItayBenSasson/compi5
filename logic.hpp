@@ -442,6 +442,7 @@ void check_cond(Node* condition)
             return;
         }
         cout << "error in check_cond" << endl;
+        cout << condition->type << endl;
         output::errorMismatch(yylineno);
         exit(0);
     }
