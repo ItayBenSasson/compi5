@@ -79,7 +79,7 @@ define i32 @main() {
 %var_49 = alloca i32
 %v_0 = add i8 0, 1
 %v_1 = zext i8 %v_0 to i32
-store i32 %v_0, i32* %var_0
+store i32 %v_1, i32* %var_0
 br label %label_3
 label_2:
 br label %label_4
@@ -105,9 +105,9 @@ label_8:
 %v_7 = load i32, i32* %var_0
 %v_8 = add i32 0, 1
 %v_9 = add i32 %v_7, %v_8
-store i32 %v_0, i32* %var_0
+store i32 %v_9, i32* %var_0
 %v_10 = add i32 0, 100
-store i32 %v_0, i32* %var_4
+store i32 %v_10, i32* %var_4
 %v_11 = load i32, i32* %var_4
 %v_12 = load i32, i32* %var_0
 %v_13 = icmp sgt i32 %v_11, %v_12
@@ -136,7 +136,7 @@ label_16:
 %v_22 = phi i32 [1, %label_14], [0, %label_15]
 store i32 %v_22, i32* %var_3
 %v_23 = add i32 0, 1
-store i32 %v_0, i32* %var_5
+store i32 %v_23, i32* %var_5
 %v_24 = load i32, i32* %var_5
 %v_25 = load i32, i32* %var_0
 %v_26 = icmp slt i32 %v_24, %v_25
@@ -174,7 +174,7 @@ label_27:
 %v_33 = load i32, i32* %var_4
 %v_34 = add i32 0, 1
 %v_35 = sub i32 %v_33, %v_34
-store i32 %v_0, i32* %var_4
+store i32 %v_35, i32* %var_4
 br label %label_29
 br label %label_28
 label_28:
@@ -184,7 +184,7 @@ label_29:
 %v_37 = load i32, i32* %var_5
 %v_38 = add i32 0, 1
 %v_39 = add i32 %v_37, %v_38
-store i32 %v_0, i32* %var_5
+store i32 %v_39, i32* %var_5
 %v_40 = load i32, i32* %var_2
 %v_41 = icmp eq i32 %v_40, 1
 br i1 %v_41, label %label_30, label %label_31
@@ -230,7 +230,7 @@ label_41:
 %v_52 = sdiv i32 %v_50, %v_51
 %v_54 = add i32 0, 1
 %v_55 = add i32 %v_52, %v_54
-store i32 %v_0, i32* %var_4
+store i32 %v_55, i32* %var_4
 br label %label_42
 br label %label_39
 label_39:

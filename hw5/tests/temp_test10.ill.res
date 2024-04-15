@@ -99,7 +99,7 @@ call void (i8*) @print(i8* getelementptr ([ 4 x i8], [4 x i8]* @.v_7, i32 0, i32
 %v_8 = load i32, i32* %var_0
 %v_9 = add i32 0, 1
 %v_10 = sub i32 %v_8, %v_9
-store i32 %v_0, i32* %var_0
+store i32 %v_10, i32* %var_0
 br label %label_3
 br label %label_5
 label_5:
@@ -108,22 +108,22 @@ call void @printi(i32 %v_11);
 %v_12 = load i32, i32* %var_0
 %v_13 = add i32 0, 1
 %v_14 = sub i32 %v_12, %v_13
-store i32 %v_0, i32* %var_0
+store i32 %v_14, i32* %var_0
 %v_15 = add i32 0, 10
-store i32 %v_0, i32* %var_1
+store i32 %v_15, i32* %var_1
 %v_16 = load i32, i32* %var_1
-store i32 %v_0, i32* %var_2
+store i32 %v_16, i32* %var_2
 %v_17 = load i32, i32* %var_2
 %v_18 = add i32 0, 0
 %v_19 = icmp sgt i32 %v_17, %v_18
 br i1 %v_19, label %label_6, label %label_7
 label_6:
 %v_20 = load i32, i32* %var_2
-store i32 %v_0, i32* %var_1
+store i32 %v_20, i32* %var_1
 %v_21 = load i32, i32* %var_2
 %v_22 = add i32 0, 1
 %v_23 = sub i32 %v_21, %v_22
-store i32 %v_0, i32* %var_2
+store i32 %v_23, i32* %var_2
 %v_24 = load i32, i32* %var_1
 %v_25 = add i32 0, 5
 %v_26 = icmp slt i32 %v_24, %v_25
@@ -137,7 +137,7 @@ label_9:
 %v_28 = load i32, i32* %var_1
 call void @printi(i32 %v_28);
 %v_29 = add i32 0, 10
-store i32 %v_0, i32* %var_3
+store i32 %v_29, i32* %var_3
 %v_30 = load i32, i32* %var_3
 %v_31 = add i32 0, 4
 %v_32 = icmp sgt i32 %v_30, %v_31
@@ -146,11 +146,11 @@ label_10:
 %v_33 = load i32, i32* %var_3
 %v_34 = add i32 0, 2
 %v_35 = sub i32 %v_33, %v_34
-store i32 %v_0, i32* %var_3
+store i32 %v_35, i32* %var_3
 br label %label_11
 call void (i8*) @print(i8* getelementptr ([ 17 x i8], [17 x i8]* @.v_36, i32 0, i32 0))
 %v_37 = add i32 0, 5000
-store i32 %v_0, i32* %var_4
+store i32 %v_37, i32* %var_4
 %v_38 = load i32, i32* %var_4
 %v_39 = load i32, i32* %var_4
 %v_40 = icmp eq i32 %v_38, %v_39
@@ -180,11 +180,11 @@ br label %label_17
 label_17:
 %v_50 = sdiv i32 %v_48, %v_49
 %v_52 = add i32 %v_47, %v_50
-store i32 %v_0, i32* %var_4
+store i32 %v_52, i32* %var_4
 %v_53 = add i32 0, 10
-store i32 %v_0, i32* %var_0
+store i32 %v_53, i32* %var_0
 %v_54 = add i32 0, 0
-store i32 %v_0, i32* %var_1
+store i32 %v_54, i32* %var_1
 %v_55 = load i32, i32* %var_0
 %v_56 = add i32 0, 4
 %v_57 = icmp sgt i32 %v_55, %v_56
@@ -214,15 +214,15 @@ call void @printi(i32 %v_67);
 %v_68 = load i32, i32* %var_0
 %v_69 = add i32 0, 1
 %v_70 = sub i32 %v_68, %v_69
-store i32 %v_0, i32* %var_0
+store i32 %v_70, i32* %var_0
 %v_71 = load i32, i32* %var_1
 %v_72 = add i32 0, 1
 %v_73 = add i32 %v_71, %v_72
-store i32 %v_0, i32* %var_1
+store i32 %v_73, i32* %var_1
 %v_74 = add i32 0, 9
-store i32 %v_0, i32* %var_0
+store i32 %v_74, i32* %var_0
 %v_75 = add i32 0, 1
-store i32 %v_0, i32* %var_1
+store i32 %v_75, i32* %var_1
 %v_76 = load i32, i32* %var_0
 %v_77 = add i32 0, 4
 %v_78 = icmp sgt i32 %v_76, %v_77
@@ -254,10 +254,10 @@ call void @printi(i32 %v_88);
 %v_89 = load i32, i32* %var_0
 %v_90 = add i32 0, 1
 %v_91 = sub i32 %v_89, %v_90
-store i32 %v_0, i32* %var_0
+store i32 %v_91, i32* %var_0
 %v_92 = load i32, i32* %var_1
 %v_93 = add i32 0, 1
 %v_94 = add i32 %v_92, %v_93
-store i32 %v_0, i32* %var_1
+store i32 %v_94, i32* %var_1
 ret i32 0
 }

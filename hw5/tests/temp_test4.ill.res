@@ -80,7 +80,7 @@ store i32 0, i32* %var_0
 %v_0 = load i32, i32* %var_0
 call void @printi(i32 %v_0);
 %v_1 = add i32 0, 1
-store i32 %v_0, i32* %var_1
+store i32 %v_1, i32* %var_1
 %v_2 = load i32, i32* %var_1
 call void @printi(i32 %v_2);
 store i32 0, i32* %var_2
@@ -91,20 +91,20 @@ call void @printi(i32 %v_4);
 %v_5 = load i32, i32* %var_2
 call void @printi(i32 %v_5);
 %v_6 = add i32 0, 3
-store i32 %v_0, i32* %var_2
+store i32 %v_6, i32* %var_2
 %v_7 = load i32, i32* %var_2
 call void @printi(i32 %v_7);
 store i32 0, i32* %var_2
 %v_8 = load i32, i32* %var_2
 call void @printi(i32 %v_8);
 %v_9 = add i32 0, 2
-store i32 %v_0, i32* %var_3
+store i32 %v_9, i32* %var_3
 %v_10 = load i32, i32* %var_3
 call void @printi(i32 %v_10);
 %v_11 = add i32 0, 4
-store i32 %v_0, i32* %var_3
+store i32 %v_11, i32* %var_3
 %v_12 = load i32, i32* %var_3
-store i32 %v_0, i32* %var_2
+store i32 %v_12, i32* %var_2
 %v_13 = load i32, i32* %var_2
 call void @printi(i32 %v_13);
 ret i32 0

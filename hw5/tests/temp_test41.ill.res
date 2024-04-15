@@ -82,7 +82,7 @@ define i32 @main() {
 %v_0 = add i32 0, 5
 store i32 %v_0, i32* %var_0
 %v_1 = add i32 0, 0
-store i32 %v_0, i32* %var_1
+store i32 %v_1, i32* %var_1
 %v_2 = load i32, i32* %var_1
 %v_3 = add i32 0, 0
 %v_4 = icmp eq i32 %v_2, %v_3

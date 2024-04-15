@@ -81,16 +81,16 @@ define i32 @main() {
 %var_49 = alloca i32
 %v_0 = add i8 0, 255
 %v_1 = zext i8 %v_0 to i32
-store i32 %v_0, i32* %var_0
+store i32 %v_1, i32* %var_0
 %v_2 = load i32, i32* %var_0
 %v_3 = add i8 0, 2
 %v_4 = zext i8 %v_3 to i32
 %v_5 = add i32 %v_2, %v_4
 %v_6 = and i32 %v_5, 255
-store i32 %v_0, i32* %var_0
+store i32 %v_6, i32* %var_0
 %v_7 = add i8 0, 1
 %v_8 = zext i8 %v_7 to i32
-store i32 %v_0, i32* %var_1
+store i32 %v_8, i32* %var_1
 %v_9 = add i32 0, 5
 %v_10 = load i32, i32* %var_1
 %v_11 = load i32, i32* %var_0

@@ -82,13 +82,13 @@ define i32 @main() {
 store i32 %v_0, i32* %var_0
 %v_1 = add i8 0, 255
 %v_2 = zext i8 %v_1 to i32
-store i32 %v_0, i32* %var_1
+store i32 %v_2, i32* %var_1
 %v_3 = load i32, i32* %var_1
 %v_4 = add i8 0, 2
 %v_5 = zext i8 %v_4 to i32
 %v_6 = add i32 %v_3, %v_5
 %v_7 = and i32 %v_6, 255
-store i32 %v_0, i32* %var_1
+store i32 %v_7, i32* %var_1
 %v_8 = load i32, i32* %var_0
 %v_9 = load i32, i32* %var_1
 %v_10 = icmp eq i32 %v_8, %v_9

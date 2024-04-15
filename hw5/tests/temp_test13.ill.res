@@ -81,20 +81,20 @@ define i32 @main() {
 %var_49 = alloca i32
 call void (i8*) @print(i8* getelementptr ([ 19 x i8], [19 x i8]* @.v_0, i32 0, i32 0))
 %v_1 = add i32 0, 20
-store i32 %v_0, i32* %var_0
+store i32 %v_1, i32* %var_0
 %v_2 = add i32 0, 1
-store i32 %v_0, i32* %var_1
+store i32 %v_2, i32* %var_1
 %v_3 = load i32, i32* %var_1
 %v_4 = load i32, i32* %var_0
 %v_5 = icmp slt i32 %v_3, %v_4
 br i1 %v_5, label %label_2, label %label_3
 label_2:
 %v_6 = add i32 0, 1
-store i32 %v_0, i32* %var_2
+store i32 %v_6, i32* %var_2
 %v_7 = add i32 0, 0
-store i32 %v_0, i32* %var_3
+store i32 %v_7, i32* %var_3
 %v_8 = add i32 0, 1
-store i32 %v_0, i32* %var_4
+store i32 %v_8, i32* %var_4
 store i32 0, i32* %var_5
 br label %label_4
 label_4:
@@ -112,23 +112,23 @@ label_7:
 %v_13 = load i32, i32* %var_4
 %v_14 = load i32, i32* %var_3
 %v_15 = add i32 %v_13, %v_14
-store i32 %v_0, i32* %var_5
+store i32 %v_15, i32* %var_5
 %v_16 = load i32, i32* %var_4
-store i32 %v_0, i32* %var_3
+store i32 %v_16, i32* %var_3
 %v_17 = load i32, i32* %var_5
-store i32 %v_0, i32* %var_4
+store i32 %v_17, i32* %var_4
 %v_18 = load i32, i32* %var_2
 %v_19 = add i32 0, 1
 %v_20 = add i32 %v_18, %v_19
 %v_21 = and i32 %v_20, 255
-store i32 %v_0, i32* %var_2
+store i32 %v_21, i32* %var_2
 br label %
 call void (i8*) @print(i8* getelementptr ([ 21 x i8], [21 x i8]* @.v_22, i32 0, i32 0))
 %v_23 = load i32, i32* %var_1
 %v_24 = add i32 0, 1
 %v_25 = add i32 %v_23, %v_24
 %v_26 = and i32 %v_25, 255
-store i32 %v_0, i32* %var_1
+store i32 %v_26, i32* %var_1
 %v_27 = add i32 0, 1
 %v_28 = add i32 0, 2
 %v_29 = icmp slt i32 %v_27, %v_28
@@ -136,9 +136,9 @@ br i1 %v_29, label %label_8, label %label_9
 label_8:
 call void (i8*) @print(i8* getelementptr ([ 33 x i8], [33 x i8]* @.v_30, i32 0, i32 0))
 %v_31 = add i32 0, 20
-store i32 %v_0, i32* %var_0
+store i32 %v_31, i32* %var_0
 %v_32 = add i32 0, 1
-store i32 %v_0, i32* %var_1
+store i32 %v_32, i32* %var_1
 br label %label_11
 label_10:
 br label %label_12
@@ -234,11 +234,11 @@ label_35:
 br label %label_33
 label_33:
 %v_54 = add i32 0, 1
-store i32 %v_0, i32* %var_4
+store i32 %v_54, i32* %var_4
 %v_55 = add i32 0, 0
-store i32 %v_0, i32* %var_5
+store i32 %v_55, i32* %var_5
 %v_56 = add i32 0, 1
-store i32 %v_0, i32* %var_6
+store i32 %v_56, i32* %var_6
 store i32 0, i32* %var_7
 %v_57 = load i32, i32* %var_4
 %v_58 = load i32, i32* %var_1
@@ -248,11 +248,11 @@ label_39:
 %v_60 = load i32, i32* %var_6
 %v_61 = load i32, i32* %var_5
 %v_62 = add i32 %v_60, %v_61
-store i32 %v_0, i32* %var_7
+store i32 %v_62, i32* %var_7
 %v_63 = load i32, i32* %var_6
-store i32 %v_0, i32* %var_5
+store i32 %v_63, i32* %var_5
 %v_64 = load i32, i32* %var_7
-store i32 %v_0, i32* %var_6
+store i32 %v_64, i32* %var_6
 %v_65 = load i32, i32* %var_2
 %v_66 = icmp eq i32 %v_65, 1
 br i1 %v_66, label %label_41, label %label_42
@@ -268,13 +268,13 @@ label_43:
 %v_67 = load i32, i32* %var_4
 %v_68 = add i32 0, 1
 %v_69 = add i32 %v_67, %v_68
-store i32 %v_0, i32* %var_4
+store i32 %v_69, i32* %var_4
 %v_70 = load i32, i32* %var_6
 call void @printi(i32 %v_70);
 %v_71 = load i32, i32* %var_1
 %v_72 = add i32 0, 1
 %v_73 = add i32 %v_71, %v_72
-store i32 %v_0, i32* %var_1
+store i32 %v_73, i32* %var_1
 ret i32 0
 ret i32 0
 }

@@ -86,7 +86,7 @@ store i32 %v_0, i32* %var_0
 br i1 %v_3, label %label_2, label %label_3
 label_2:
 %v_4 = add i32 0, 0
-store i32 %v_0, i32* %var_1
+store i32 %v_4, i32* %var_1
 %v_5 = load i32, i32* %var_1
 %v_6 = add i32 0, 3
 %v_7 = icmp slt i32 %v_5, %v_6
@@ -110,10 +110,10 @@ call void @printi(i32 %v_14);
 %v_15 = load i32, i32* %var_1
 %v_16 = add i32 0, 1
 %v_17 = add i32 %v_15, %v_16
-store i32 %v_0, i32* %var_1
+store i32 %v_17, i32* %var_1
 %v_18 = load i32, i32* %var_0
 %v_19 = add i32 0, 1
 %v_20 = add i32 %v_18, %v_19
-store i32 %v_0, i32* %var_0
+store i32 %v_20, i32* %var_0
 ret i32 0
 }

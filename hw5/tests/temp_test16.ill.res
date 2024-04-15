@@ -84,7 +84,7 @@ store i32 %v_0, i32* %var_0
 br i1 %v_3, label %label_2, label %label_3
 label_2:
 %v_4 = add i32 0, 2
-store i32 %v_0, i32* %var_1
+store i32 %v_4, i32* %var_1
 br label %label_4
 label_4:
 br label %label_6
@@ -140,7 +140,7 @@ label_14:
 %v_23 = load i32, i32* %var_1
 %v_24 = add i32 0, 1
 %v_25 = add i32 %v_23, %v_24
-store i32 %v_0, i32* %var_1
+store i32 %v_25, i32* %var_1
 %v_26 = load i32, i32* %var_2
 %v_27 = icmp eq i32 %v_26, 1
 br i1 %v_27, label %label_18, label %label_19
@@ -162,7 +162,7 @@ label_21:
 %v_32 = load i32, i32* %var_0
 %v_33 = add i32 0, 1
 %v_34 = add i32 %v_32, %v_33
-store i32 %v_0, i32* %var_0
+store i32 %v_34, i32* %var_0
 ret i32 0
 ret i32 0
 }

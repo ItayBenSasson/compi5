@@ -79,103 +79,103 @@ define i32 @main() {
 %v_0 = add i32 0, 1
 store i32 %v_0, i32* %var_0
 %v_1 = add i32 0, 2
-store i32 %v_0, i32* %var_1
+store i32 %v_1, i32* %var_1
 %v_2 = add i32 0, 3
-store i32 %v_0, i32* %var_2
+store i32 %v_2, i32* %var_2
 %v_3 = add i32 0, 4
-store i32 %v_0, i32* %var_3
+store i32 %v_3, i32* %var_3
 %v_4 = add i32 0, 5
-store i32 %v_0, i32* %var_4
+store i32 %v_4, i32* %var_4
 %v_5 = add i32 0, 6
-store i32 %v_0, i32* %var_5
+store i32 %v_5, i32* %var_5
 %v_6 = add i32 0, 7
-store i32 %v_0, i32* %var_6
+store i32 %v_6, i32* %var_6
 %v_7 = add i32 0, 8
-store i32 %v_0, i32* %var_7
+store i32 %v_7, i32* %var_7
 %v_8 = add i32 0, 9
-store i32 %v_0, i32* %var_8
+store i32 %v_8, i32* %var_8
 %v_9 = add i32 0, 10
-store i32 %v_0, i32* %var_9
+store i32 %v_9, i32* %var_9
 %v_10 = add i32 0, 11
-store i32 %v_0, i32* %var_10
+store i32 %v_10, i32* %var_10
 %v_11 = add i32 0, 12
-store i32 %v_0, i32* %var_11
+store i32 %v_11, i32* %var_11
 %v_12 = add i32 0, 13
-store i32 %v_0, i32* %var_12
+store i32 %v_12, i32* %var_12
 %v_13 = add i32 0, 14
-store i32 %v_0, i32* %var_13
+store i32 %v_13, i32* %var_13
 %v_14 = add i32 0, 15
-store i32 %v_0, i32* %var_14
+store i32 %v_14, i32* %var_14
 %v_15 = add i32 0, 16
-store i32 %v_0, i32* %var_15
+store i32 %v_15, i32* %var_15
 %v_16 = add i32 0, 17
-store i32 %v_0, i32* %var_16
+store i32 %v_16, i32* %var_16
 %v_17 = add i32 0, 18
-store i32 %v_0, i32* %var_17
+store i32 %v_17, i32* %var_17
 %v_18 = add i32 0, 19
-store i32 %v_0, i32* %var_18
+store i32 %v_18, i32* %var_18
 %v_19 = add i32 0, 20
-store i32 %v_0, i32* %var_19
+store i32 %v_19, i32* %var_19
 %v_20 = add i32 0, 21
-store i32 %v_0, i32* %var_20
+store i32 %v_20, i32* %var_20
 %v_21 = add i32 0, 22
-store i32 %v_0, i32* %var_21
+store i32 %v_21, i32* %var_21
 %v_22 = add i32 0, 23
-store i32 %v_0, i32* %var_22
+store i32 %v_22, i32* %var_22
 %v_23 = add i32 0, 24
-store i32 %v_0, i32* %var_23
+store i32 %v_23, i32* %var_23
 %v_24 = add i32 0, 25
-store i32 %v_0, i32* %var_24
+store i32 %v_24, i32* %var_24
 %v_25 = add i32 0, 26
-store i32 %v_0, i32* %var_25
+store i32 %v_25, i32* %var_25
 %v_26 = add i32 0, 27
-store i32 %v_0, i32* %var_26
+store i32 %v_26, i32* %var_26
 %v_27 = add i32 0, 28
-store i32 %v_0, i32* %var_27
+store i32 %v_27, i32* %var_27
 %v_28 = add i32 0, 29
-store i32 %v_0, i32* %var_28
+store i32 %v_28, i32* %var_28
 %v_29 = add i32 0, 30
-store i32 %v_0, i32* %var_29
+store i32 %v_29, i32* %var_29
 %v_30 = add i32 0, 31
-store i32 %v_0, i32* %var_30
+store i32 %v_30, i32* %var_30
 %v_31 = add i32 0, 32
-store i32 %v_0, i32* %var_31
+store i32 %v_31, i32* %var_31
 %v_32 = add i32 0, 33
-store i32 %v_0, i32* %var_32
+store i32 %v_32, i32* %var_32
 %v_33 = add i32 0, 34
-store i32 %v_0, i32* %var_33
+store i32 %v_33, i32* %var_33
 %v_34 = add i32 0, 35
-store i32 %v_0, i32* %var_34
+store i32 %v_34, i32* %var_34
 %v_35 = add i32 0, 36
-store i32 %v_0, i32* %var_35
+store i32 %v_35, i32* %var_35
 %v_36 = add i32 0, 37
-store i32 %v_0, i32* %var_36
+store i32 %v_36, i32* %var_36
 %v_37 = add i32 0, 38
-store i32 %v_0, i32* %var_37
+store i32 %v_37, i32* %var_37
 %v_38 = add i32 0, 39
-store i32 %v_0, i32* %var_38
+store i32 %v_38, i32* %var_38
 %v_39 = add i32 0, 40
-store i32 %v_0, i32* %var_39
+store i32 %v_39, i32* %var_39
 %v_40 = add i32 0, 41
-store i32 %v_0, i32* %var_40
+store i32 %v_40, i32* %var_40
 %v_41 = add i32 0, 42
-store i32 %v_0, i32* %var_41
+store i32 %v_41, i32* %var_41
 %v_42 = add i32 0, 43
-store i32 %v_0, i32* %var_42
+store i32 %v_42, i32* %var_42
 %v_43 = add i32 0, 44
-store i32 %v_0, i32* %var_43
+store i32 %v_43, i32* %var_43
 %v_44 = add i32 0, 45
-store i32 %v_0, i32* %var_44
+store i32 %v_44, i32* %var_44
 %v_45 = add i32 0, 46
-store i32 %v_0, i32* %var_45
+store i32 %v_45, i32* %var_45
 %v_46 = add i32 0, 47
-store i32 %v_0, i32* %var_46
+store i32 %v_46, i32* %var_46
 %v_47 = add i32 0, 48
-store i32 %v_0, i32* %var_47
+store i32 %v_47, i32* %var_47
 %v_48 = add i32 0, 49
-store i32 %v_0, i32* %var_48
+store i32 %v_48, i32* %var_48
 %v_49 = add i32 0, 50
-store i32 %v_0, i32* %var_49
+store i32 %v_49, i32* %var_49
 %v_50 = load i32, i32* %var_0
 call void @printi(i32 %v_50);
 %v_51 = load i32, i32* %var_1

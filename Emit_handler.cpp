@@ -285,9 +285,9 @@ void store(Node *idNode, Node *exp) {
     }
     if (expNode->type != "BOOL" && aux) {
         
-        //string cmd = "store i32 " + expNode->iid + ", i32* %var_" + to_string(offset);
-        //Todo: fix this
-        string cmd = "store i32 " + string("%v_0") + ", i32* %var_" + to_string(offset);
+        string cmd = "store i32 " + expNode->iid + ", i32* %var_" + to_string(offset);
+        //Todo: fix this ,,,fixed
+        //string cmd = "store i32 " + string("%v_0") + ", i32* %var_" + to_string(offset);
         buff.emit(cmd);
         //cout << "store exited\n" << endl;
         return;
@@ -450,6 +450,7 @@ void handle_relop(Node *exp, Node *left, Node *right, Node *op_node) {
     string op = get_operation(((OperationNode *) op_node)->operation);
 
     string temp_var = Var::fresh();
+    //todo: fix error here of use of undefined value %label_3 in (false l)
     string cmd = temp_var + " = icmp " + op + " i32 " + left->iid + ", " + right->iid + "\n"
                  + "br i1 " + temp_var + ", label %" + expNode->true_l + ", label %" + expNode->false_l;
     buff.emit(cmd);
